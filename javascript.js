@@ -1,2 +1,2 @@
 console.log("Proyecto de apps multimedia");
-alert("La página funciona");
+//alert("La página funciona");
