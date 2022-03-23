@@ -1,42 +1,79 @@
 
   h1{
     color: rgb(14, 14, 199);
-    background-color: yellow;
+    background-color: #fde000;
     text-align: center;
     font-family: fantasy;
+    font-size: 50px;
+    border-radius: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
   }
 
   h2{
     font-family:cursive;
+
   }
 
   #navegador{
-    background-color: #333;
+    background-color: #fde000;
     overflow:hidden;
+    margin-left: 21px;
+    margin-right: 21px;
+    border-radius: 50px;
 
   }
   #navegador a{
     display: block;
-    text-decoration: none;
-    color: #f2f2f2;
+    text-decoration:none;
+    color: rgb(14, 14, 199);
     float:left;
-    text-align: center;
-    padding: 25px 50px;
+    padding: 25px 62px;
     font-size: 17px;
     border-radius: 50px;
   }
   #navegador a:hover{
-    background-color: #ddd;
-    color: black;
+    background-color: lightpink;
+    color: #f2f2f2;
   }
   #navegador a:active{
-    background-color: #dddd;
+    background-color: pink;
     color: yellow;
   }
-  
+
   .mostrar{
     display: block;
   }
   .ocultar{
     display: none;
   }
+
+  body{
+    background-image: url("imagenes/Fondo-donuts.jpeg");
+  }
+
+  canvas{
+    background-color: pink;
+
+  }
+
+  #inicio {
+    background-color: #fff;
+    text-align: center;
+    padding: 25px 25px;
+    opacity: 0.98;
+    border-radius: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+  #descripcion{
+    background-color: #fff;
+    text-align: center;
+    padding: 25px 25px;
+    opacity: 0.98;
+    border-radius: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  
