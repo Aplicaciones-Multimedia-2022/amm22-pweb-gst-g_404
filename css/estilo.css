@@ -11,26 +11,34 @@
   }
 
   h2{
-    font-family:monospace;
+    font-family:sans-serif;
 
   }
 
   #navegador{
     background-color: #fde000;
-    overflow:hidden;
-    margin-left: 21px;
-    margin-right: 21px;
+    overflow: auto;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction:row;
+    justify-content:space-around;   /* Deja espacio entre los elementos */
     border-radius: 50px;
 
   }
+
   #navegador a{
-    display: block;
-    text-decoration:none;
+    text-decoration: none;
     color: rgb(14, 14, 199);
-    float:left;
-    padding: 25px 62px;
-    font-size: 17px;
+    float: left;       /* Ordena de izq a derecha */
+
+
+    padding: 25px ;
+    font-size: 20px;
     border-radius: 50px;
+    font-family: sans-serif;
   }
   #navegador a:hover{
     background-color: lightpink;
@@ -45,25 +53,24 @@
     background-image: url("../imagenes/Fondo-donuts.jpeg");
   }
 
-  .inicio {
+  .contenedor {
     background-color: pink;
-    color: blue;
-    text-align: center;
+    color: black;
+
+    width: 75%;       /* Ancho del contenedor */
+    margin-top: 1%;
+    margin-left: auto;    /* Márgenes automáticos de los lados */
+    margin-right: auto;
+
     border-radius: 50px 0px 50px 0px;
-    margin-left: 200px;
-    margin-right: 200px;
-  }
+    opacity: 98%;
 
-  #inicio h2{
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* eje x*/
+    align-items: center;      /* eje y*/
+    height: 50%;      /* Altura del contenedor */
   }
-
-  #descripcion{
-    background-color: #fff;
-    text-align: center;
-    padding: 25px 25px;
-    opacity: 0.98;
-    border-radius: 50px;
-    margin-left: 200px;
-    margin-right: 200px;
+  .contenedor h2{
+    color: blue;
   }
