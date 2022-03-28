@@ -3,11 +3,12 @@
     color: rgb(14, 14, 199);
     background-color: #fde000;
     text-align: center;
-    font-family:monospace;
+    font-family: monospace;
     font-size: 50px;
     border-radius: 50px;
-    margin-left: 200px;
-    margin-right: 200px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   h2{
@@ -110,7 +111,7 @@
 
   .texto_sup h2{
     color: white;
-    margin-top: 10%;
+    margin-top: 10%;    /* Márgen para que quede bien el texto*/
   }
 
   .texto_sup p{
