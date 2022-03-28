@@ -3,7 +3,7 @@
     color: rgb(14, 14, 199);
     background-color: #fde000;
     text-align: center;
-    font-family: monospace;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 50px;
     border-radius: 50px;
     width: 60%;
@@ -35,7 +35,6 @@
     color: rgb(14, 14, 199);
     float: left;       /* Ordena de izq a derecha */
 
-
     padding: 25px ;
     font-size: 20px;
     border-radius: 50px;
@@ -43,11 +42,19 @@
   }
   #navegador a:hover{
     background-color: lightpink;
-    color: #f2f2f2;
+    color: white;
   }
+
   #navegador a:active{
     background-color: pink;
-    color: yellow;
+    color: whitesmoke;
+    
+  }
+
+  #navegador a.activo{    /* a.cualquier clase que hayamos creado */
+    color: #f2f2f2;
+    background-color: pink;
+    font-style: italic;
   }
 
   body{
@@ -74,6 +81,40 @@
   }
   .contenedor h2{
     color: blue;
+  }
+
+  .contenedor_desarrollo{
+    background-color: pink;
+    color: blue;
+    width: 75%;       /* Ancho del contenedor */
+    margin-top: 1%;
+    margin-left: auto;    /* Márgenes automáticos de los lados */
+    margin-right: auto;
+    border-radius: 50px 0px 50px 0px;
+    opacity: 98%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* eje x*/
+    align-items: center;      /* eje y*/
+  }
+
+  .contenedor_desarrollo_semanas{
+    color: black;
+    width: 95%;
+    /*background-color: rgba(2, 2, 2, 0.63);      VER SI PONER COLOR DISTINTO CUANDO ESTÉ ACABADO*/
+    
+    text-align: justify;
+  }
+
+  .contenedor_desarrollo_semanas h3{
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: 5%;
+    
+  }
+  .contenedor_desarrollo_semanas h5{
+    color: chartreuse;
+    font-weight: bold;
   }
 
 /* ---------------------- PARTE DE AUTORES ----------------------------*/
@@ -123,3 +164,5 @@
     bottom: 0;
     height: 100%;
   }
+/* ------------------------------------------------------------------- */
+
