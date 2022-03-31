@@ -22,23 +22,28 @@ window.onload = function(){
             }
 
             tab();
-            var homer = new Object();
-            homer.pos_x = 50;
-            homer.pos_y = 250;
 
-            function pintar_homer() {
-              ctx.beginPath();
-              ctx.strokeStyle = 'white';
-              ctx.arc(homer.pos_x, homer.pos_y, 25, 0, 2 * Math.PI);
-              ctx.fillStyle = 'white';
-              ctx.fill();
+            var marginLeft= 10;
+
+            function pintar_homer(life, score) {
+
+              var homer = new Image();
+              homer.src = 'imagenes/Jugador-Homer.jpeg';
+              homer.pos_x = (canvas.height/2)-(homer.height/2);
+              homer.pos_y = canvas.width - (player.width == 0 ? player.Width) - marginLeft;
+              homer.life = life;
+              homer.score = score;
+              homer.dead = False;
             }
-            pintar_homer();
+
 
             function pintar_donuts(){
+              var x = canva.width-700;
+              var y = canva.height-20;
               ctx.beginPath();
-              ctx.strokeStyle = "pink";
-              ctx.arc
+              var donuts=new Images();
+              donuts.src = 'imagenes/donuts.png';
+              donuts.arc = (x, y);
             }
 
 /* ---------------------- MOVER A HOMER -------------------------------- */
@@ -71,7 +76,9 @@ window.onload = function(){
 
             function pintar (){
               ctx.clearRect(0, 0, canvas.width, canvas.height);
-              pintar_homer();
+              pintar_homer(3,0);
+              pintar_donuts();
+              x -= 2;
 
               if(upPress && homer.pos_y < canvas.width-paddleWidth) { //para el movimiento de la cara de homer
                 homer.pos_y += 7;
@@ -81,7 +88,7 @@ window.onload = function(){
               }
 
             }
-            pintar();
+            setInterval(pintar, 10);
 
         }
     }
