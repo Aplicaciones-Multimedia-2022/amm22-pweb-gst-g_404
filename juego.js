@@ -28,15 +28,15 @@ window.onload = function(){
 
             function pintar_homer(life, score) {
 
-              homer.beginPath();
-              homer.src = 'imagenes/Jugador-Homer.jpeg';
-              homer.pos_x = (canvas.height/2)-(homer.height/2);
-              homer.pos_y = canvas.width - (player.width == 0 ? player.Width) - marginLeft;
-              homer.life = life;
-              homer.score = score;
-              homer.dead = False;
-              homer.fill();
-              ctx.closePath();
+              homerctx.beginPath();
+              homerctx.src = 'imagenes/Jugador-Homer.jpeg';
+              homerctx.pos_x = (canvas.height/2)-(homer.height/2);
+              homerctx.pos_y = canvas.width - (player.width == 0 ? player.Width) - marginLeft;
+              homerctx.life = life;
+              homerctx.score = score;
+              homerctx.dead = False;
+              homerctx.fill();
+              homerctx.closePath();
             }
 
 /*
@@ -80,7 +80,7 @@ window.onload = function(){
             function pintar (){
               ctx.clearRect(0, 0, tablero.width, canvas.height);
               tab();
-              homer = new pintar_homer(3,0);
+              jugador = new pintar_homer(3,0);
             //  pintar_donuts();
             //  x -= 2;
 
@@ -92,7 +92,7 @@ window.onload = function(){
               }
 
             }
-            setInterval(pintar, 10);
+            setInterval(pintar, 20);
 
         }else{
           return alert('No se ha podido crear el objeto canvas');
