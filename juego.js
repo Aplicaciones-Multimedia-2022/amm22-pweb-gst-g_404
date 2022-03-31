@@ -1,9 +1,12 @@
 window.onload = function(){
     var tablero;
     document.getElementById("boton").onclick = function inicio(){
-        tablero = document.getElementById("juego");
+      var tablero = document.getElementById("juego");
         if(tablero && tablero.getContext){
             var ctx = tablero.getContext("2d");
+            var marginLeft= 10;
+            var homer = new Image();
+            var homerctx = homer.getContext("2d")
 
             function tab(){
                 ctx.fillStyle = 'lightpink';   //cambiar el color.
@@ -21,22 +24,22 @@ window.onload = function(){
                 */
             }
 
-            tab();
 
-            var marginLeft= 10;
 
             function pintar_homer(life, score) {
 
-              var homer = new Image();
+              homer.beginPath();
               homer.src = 'imagenes/Jugador-Homer.jpeg';
               homer.pos_x = (canvas.height/2)-(homer.height/2);
               homer.pos_y = canvas.width - (player.width == 0 ? player.Width) - marginLeft;
               homer.life = life;
               homer.score = score;
               homer.dead = False;
+              homer.fill();
+              ctx.closePath();
             }
 
-
+/*
             function pintar_donuts(){
               var x = canva.width-700;
               var y = canva.height-20;
@@ -45,7 +48,7 @@ window.onload = function(){
               donuts.src = 'imagenes/donuts.png';
               donuts.arc = (x, y);
             }
-
+*/
 /* ---------------------- MOVER A HOMER -------------------------------- */
 
             var upPress = False; //Para la flecha de arriba
@@ -75,10 +78,11 @@ window.onload = function(){
 /* ---------------------- FUNCION PARA PINTAR -------------------------------- */
 
             function pintar (){
-              ctx.clearRect(0, 0, canvas.width, canvas.height);
-              pintar_homer(3,0);
-              pintar_donuts();
-              x -= 2;
+              ctx.clearRect(0, 0, tablero.width, canvas.height);
+              tab();
+              homer = new pintar_homer(3,0);
+            //  pintar_donuts();
+            //  x -= 2;
 
               if(upPress && homer.pos_y < canvas.width-paddleWidth) { //para el movimiento de la cara de homer
                 homer.pos_y += 7;
@@ -90,6 +94,8 @@ window.onload = function(){
             }
             setInterval(pintar, 10);
 
+        }else{
+          return alert('No se ha podido crear el objeto canvas');
         }
     }
 }
