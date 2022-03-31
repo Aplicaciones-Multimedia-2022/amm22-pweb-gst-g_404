@@ -6,8 +6,8 @@ window.onload = function(){
       if(tablero && tablero.getContext){
         var ctx = tablero.getContext("2d");
         var marginLeft= 10;
-        var homer = new Image();
-        var homerctx = homer.getContext("2d")
+
+      //  var homerctx = homer.getContext("2d")
 
         function tab(){
           ctx.fillStyle = 'lightpink';   //cambiar el color.
@@ -28,15 +28,17 @@ window.onload = function(){
 
 
         function pintar_homer(life, score) {
-          homerctx.beginPath();
-          homerctx.src = 'imagenes/Jugador-Homer.jpeg';
-          homerctx.pos_x = (tablero.height/2)-(homer.height/2);
-          homerctx.pos_y = tablero.width - (homer.width == 0 ? homer.width) - marginLeft;
-          homerctx.life = life;
-          homerctx.score = score;
-          homerctx.dead = False;
-          homerctx.fill();
-          homerctx.closePath();
+          var homer = new Image();
+          homer.src = 'imagenes/Jugador-Homer.jpeg';
+          homer.onload = function() {
+            ctx.drawImage(homer, homer.width, homer.height);
+          };
+          homer.pos_x = (tablero.height/2)-(homer.height/2);
+          homer.pos_y = (tablero.width - homer.width)/2 - marginLeft;
+          homer.life = life;
+          homer.score = score;
+          homer.dead = False;
+
         }
 
 /*
@@ -75,7 +77,7 @@ window.onload = function(){
          }
 
 /* ---------------------- FUNCION PARA PINTAR -------------------------------- */
-         function pintar (){
+  /*       function pintar (){
            ctx.clearRect(0, 0, tablero.width, tablero.height);
            tab();
            jugador = new pintar_homer(3,0);
@@ -91,9 +93,9 @@ window.onload = function(){
 
          }
          setInterval(pintar, 20);
-
-         }else{
-           return alert('No se ha podido crear el objeto canvas');
-         }
+*/
+      }else{
+        return alert('No se ha podido crear el objeto canvas');
+      }
     }
 }
