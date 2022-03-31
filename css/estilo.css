@@ -4,7 +4,8 @@
     background-color: #fde000;
     text-align: center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 50px;
+    /*font-size: 50px;*/
+    font-size: 3.5em;
     border-radius: 50px;
     width: 60%;
     margin-left: auto;
@@ -25,8 +26,10 @@
 
     display: flex;
     flex-direction:row;
-    justify-content:space-around;   /* Deja espacio entre los elementos */
+    justify-content:space-evenly;   /* Deja el mismo espacio entre los elementos */
+    align-items: center;
     border-radius: 50px;
+    flex-wrap:wrap;            /* Cuando no entran los items se van abajo */
 
   }
 
@@ -119,22 +122,29 @@
 
 /* ---------------------- PARTE DE AUTORES ----------------------------*/
 
+  .contenedor_fotos_superior{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
   .contenedor_fotos{
     position: relative;
     width: 100%;
 
-    display: flex;
-    margin-top: 5%;
+    margin-top: 5%;           /* AJUSTAR LOS MÁRGENES */
     margin-bottom: 5%;
     background-color: #ddd;   /* QUITAR CUANDO ESTÉN LAS FOTOS PUESTAS */
     width: 300px;
     height: 350px;
 
     float: Left;    /* Ponemos las imagenes de izq a der */
-    text-align: center;
+    text-align: center;     /* texto interior en el centro */
 
-    margin-Left: 20px;
-    padding: 50px;
+    margin-Left: auto;
+    margin-right: auto;
+    padding: 50px ;
     box-shadow: 8px 8px 15px;
   }
 
