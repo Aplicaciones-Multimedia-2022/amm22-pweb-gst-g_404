@@ -198,3 +198,7 @@
   align-items: center;      /* eje y*/
   
 }
+
+#homer{
+  display: none;
+}
