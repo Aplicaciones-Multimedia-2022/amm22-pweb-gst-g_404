@@ -5,24 +5,30 @@ window.onload = function(){
         var tablero = document.getElementById("juego");
 
         if(tablero && tablero.getContext){
-            /*
             var ctx = tablero.getContext("2d");
+            
             //var marginLeft= 10;
             //var homerctx = homer.getContext("2d")
 
+            var upPress = false; //Para la flecha de arriba
+            var downPress = false; //Para la flecha de abajo
+
+            //variables de movimiento
+            var pelota_radio = 20;
+            var pelota_x = tablero.width/8;
+            var pelota_y = tablero.height/2;
             
-            var upPress = False; //Para la flecha de arriba
-            var downPress = False; //Para la flecha de abajo
 
             //Eventos de escucha del teclado
             document.addEventListener("keydown", keyDownHandler, false); //para saber si se pulsa
             document.addEventListener("keyup", keyUpHandler, false); //para saber si se deja de pulsar
-
+            
             //Funciones de detección de las teclas
             function keyDownHandler(e) {
                 if(e.keyCode == 38) {
                     upPress = true;
-                }else if(e.keyCode == 40) {
+                }
+                else if(e.keyCode == 40) {
                     downPress = true;
                 }
             }
@@ -58,7 +64,7 @@ window.onload = function(){
                 ctx.stroke();
                 */
             }
-            tab();
+            
 
             function pintar_homer() {
                 var img = document.getElementById("homer");
@@ -70,6 +76,17 @@ window.onload = function(){
                 };*/
             }
             //pintar_homer();
+
+
+            function pelota(){      //Dibujo una pelota para simular que es homer
+                ctx.beginPath();
+                ctx.arc(pelota_x, pelota_y, pelota_radio, 0, Math.PI*2);
+                ctx.fillStyle = "green";
+                ctx.fill();
+                ctx.closePath();
+
+            }
+            
 
             /*
             function pintar_donuts(){
@@ -83,25 +100,38 @@ window.onload = function(){
             */
 
             /* ---------------------- FUNCION PARA PINTAR -------------------------------- */
-            /*
+            
             function pintar (){
+
                 ctx.clearRect(0, 0, tablero.width, tablero.height);
                 tab();
-                jugador = new pintar_homer(3,0);
-                pintar_donuts();
-                x -= 2;
-
-                if(upPress && homer.pos_y < tablero.width-homer.width) { //para el movimiento de la cara de homer
-                    homer.pos_y += 7;
+                pelota();
+                
+                //Movimineto de la pelota
+                if(upPress) {
+                    if(pelota_y < 100){      //Para poner un borde artificial y que no nos salgamos del mapa
+                        pelota_y -= 0;
+                    }
+                    else{
+                        pelota_y -= 83;
+                        upPress = false;        //Para que las pulsaciones sean finitas
+                    }
+                    
                 }
-                else if(downPress && homer.pos_y > 0) {
-                    homer.pos_y -= 7;
-                }
-
+                else if(downPress) {
+                    if(pelota_y > 400){ 
+                        pelota_y += 0;
+                    }
+                    else{
+                        pelota_y += 83;
+                        downPress = false;
+                    }
+                }                 
             }
             setInterval(pintar, 20);
-            */
-        }else{
+            
+        }
+        else{
             return alert('No se ha podido crear el objeto canvas');
         }
     }
