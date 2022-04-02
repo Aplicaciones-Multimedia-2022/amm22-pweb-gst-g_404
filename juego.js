@@ -17,6 +17,24 @@ window.onload = function(){
             var pelota_radio = 20;
             var pelota_x = tablero.width/16;
             var pelota_y = tablero.height/2;
+
+            //variables movimiento donuts
+            var donut_x = (tablero.width - tablero.width/16);   //ancho original - 1/16 ancho
+            var dx_donut = 1;
+            var donut_y = Math.random();
+
+            //Posibles valores para los donuts en sus carriles
+            if(donut_y > 0 && donut_y < 0.2){
+                donut_y = 83;
+            }else if(donut_y >= 0.2 && donut_y < 0.4){
+                donut_y = 166;
+            }else if(donut_y >= 0.4 && donut_y < 0.6){
+                donut_y = 250;
+            }else if(donut_y >= 0.6 && donut_y < 0.8){
+                donut_y = 333;
+            }else{
+                donut_y = 416;
+            }
             
 
             //Eventos de escucha del teclado
@@ -77,7 +95,6 @@ window.onload = function(){
                     ctx.drawImage(homero.src, 200, 250);
                 };*/
             }
-            //pintar_homer();
 
 
             function pelota(){      //Dibujo una pelota para simular que es homer
@@ -90,16 +107,15 @@ window.onload = function(){
             }
             
 
-            /*
+            
             function pintar_donuts(){
-                var x = canva.width-700;
-                var y = canva.height-20;
                 ctx.beginPath();
-                var donuts=new Images();
-                donuts.src = 'imagenes/donuts.png';
-                donuts.arc = (x, y);
+                ctx.arc(donut_x, donut_y, pelota_radio, 0, Math.PI*2);
+                ctx.fillStyle = "green";
+                ctx.fill();
+                ctx.closePath();
             }
-            */
+            
 
             /* ---------------------- FUNCION PARA PINTAR -------------------------------- */
             
@@ -109,6 +125,7 @@ window.onload = function(){
                 tab();
                 //pelota();
                 pintar_homer();
+                pintar_donuts();
                 
                 //Movimineto de la pelota
                 if(upPress) {
@@ -129,7 +146,10 @@ window.onload = function(){
                         pelota_y += 83;
                         downPress = false;
                     }
-                }                 
+                }
+                
+                //Movimiento de los donuts
+                donut_x -= 2*dx_donut;
             }
             setInterval(pintar, 20);
             
