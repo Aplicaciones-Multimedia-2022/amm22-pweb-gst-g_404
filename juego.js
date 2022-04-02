@@ -15,7 +15,7 @@ window.onload = function(){
 
             //variables de movimiento
             var pelota_radio = 20;
-            var pelota_x = tablero.width/8;
+            var pelota_x = tablero.width/16;
             var pelota_y = tablero.height/2;
             
 
@@ -68,7 +68,9 @@ window.onload = function(){
 
             function pintar_homer() {
                 var img = document.getElementById("homer");
-                ctx.drawImage(img, 100, 100, 200, 140);
+                //ctx.drawImage(img, 100, 100, 200, 140);
+                ctx.drawImage(img, 50, 25, 500, 500, pelota_x, pelota_y-35, 80, 80);
+
                 /*var homero = new Image();
                 homero.src = '../imagenes/Jugador-Homer.jpeg'
                 homero.onload = function() {
@@ -105,7 +107,8 @@ window.onload = function(){
 
                 ctx.clearRect(0, 0, tablero.width, tablero.height);
                 tab();
-                pelota();
+                //pelota();
+                pintar_homer();
                 
                 //Movimineto de la pelota
                 if(upPress) {
