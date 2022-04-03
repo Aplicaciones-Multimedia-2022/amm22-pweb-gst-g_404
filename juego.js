@@ -6,7 +6,9 @@ window.onload = function(){
 
         if(tablero && tablero.getContext){
             var ctx = tablero.getContext("2d");
-            
+            /*---------------------------------------------------------------------------*/
+                //INICIALIZACIÓN DE VARIABLES//
+            /*---------------------------------------------------------------------------*/
             //var marginLeft= 10;
             //var homerctx = homer.getContext("2d")
 
@@ -20,10 +22,13 @@ window.onload = function(){
 
             //variables movimiento donuts
             var donut_x = (tablero.width - tablero.width/16);   //ancho original - 1/16 ancho
+            var donut_x2 = (tablero.width - tablero.width/16);
             var dx_donut = 1;
-            var donut_y = Math.random();
 
-            //Posibles valores para los donuts en sus carriles
+            /*---------------------------------------------------------------------------*/
+            //Inicialización de las alturas de los donuts
+            var donut_y = Math.random();
+            
             if(donut_y > 0 && donut_y < 0.2){
                 donut_y = 83;
             }else if(donut_y >= 0.2 && donut_y < 0.4){
@@ -35,7 +40,31 @@ window.onload = function(){
             }else{
                 donut_y = 416;
             }
-            
+
+            //Función para los valores aleatorios de los donuts al llegar al final
+            function valores_y(){
+                var donut_y = Math.random();
+                if(donut_y > 0 && donut_y < 0.2){
+                    donut_y = 83;
+                }else if(donut_y >= 0.2 && donut_y < 0.4){
+                    donut_y = 166;
+                }else if(donut_y >= 0.4 && donut_y < 0.6){
+                    donut_y = 250;
+                }else if(donut_y >= 0.6 && donut_y < 0.8){
+                    donut_y = 333;
+                }else{
+                    donut_y = 416;
+                }
+                return donut_y;
+            }
+            /*---------------------------------------------------------------------------*/
+            //Variable y función para incrementar el contador de tiempo
+            var tiempo = 0;
+            function incremento_tiempo(){
+                tiempo += 1;
+                return tiempo;
+            }
+
 
             //Eventos de escucha del teclado
             document.addEventListener("keydown", keyDownHandler, false); //para saber si se pulsa
@@ -67,11 +96,16 @@ window.onload = function(){
             homer.pos_x = tablero.width/4;
             */
             
-            function tab(){
+            
+            /*---------------------------------------------------------------------------*/
+                //FUNCIONES DEL JUEGO//
+            /*---------------------------------------------------------------------------*/
+            //Función para pintar el tablero
+            function tab(){ 
                 ctx.fillStyle = 'lightpink';   //cambiar el color.
                 ctx.fillRect(0, 0, 800, 500);
 
-                /*                  PARA PONER BORDES
+                /*  //PARA PONER BORDES
                 ctx.beginPath();
                 ctx.moveTo(0,0);
                 ctx.lineTo(400,0);
@@ -83,7 +117,7 @@ window.onload = function(){
                 */
             }
             
-
+            //Función para pintar a homer
             function pintar_homer() {
                 var img = document.getElementById("homer");
                 //ctx.drawImage(img, 100, 100, 200, 140);
@@ -95,39 +129,59 @@ window.onload = function(){
                     ctx.drawImage(homero.src, 200, 250);
                 };*/
             }
-
-
-            function pelota(){      //Dibujo una pelota para simular que es homer
-                ctx.beginPath();
-                ctx.arc(pelota_x, pelota_y, pelota_radio, 0, Math.PI*2);
-                ctx.fillStyle = "green";
-                ctx.fill();
-                ctx.closePath();
-
-            }
             
-
-            
+            //Función para pintar donuts
             function pintar_donuts(){
                 ctx.beginPath();
-                ctx.arc(donut_x, donut_y, pelota_radio, 0, Math.PI*2);
+                ctx.arc(donut_x, donut_y , pelota_radio, 0, Math.PI*2);
                 ctx.fillStyle = "green";
                 ctx.fill();
                 ctx.closePath();
             }
+
+
+            function pintar_donuts2(){
+                ctx.beginPath();
+                ctx.arc(donut_x2, donut_y , pelota_radio, 0, Math.PI*2);
+                ctx.fillStyle = "blue";
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            
+            function pintar_tiempo(){
+                ctx.font = "16px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText("Tiempo de juego: "+ tiempo + " segundos", 10, 20);
+            }
             
 
-            /* ---------------------- FUNCION PARA PINTAR -------------------------------- */
-            
+            /*---------------------------------------------------------------------------*/
+                //BUCLE DEL JUEGO//
+            /*---------------------------------------------------------------------------*/
             function pintar (){
 
-                ctx.clearRect(0, 0, tablero.width, tablero.height);
-                tab();
-                //pelota();
-                pintar_homer();
-                pintar_donuts();
+                ctx.clearRect(0, 0, tablero.width, tablero.height); //Limpiamos el tablero
+                tab();  //Dibujamos el tablero
+                pintar_homer(); //Pintamos a homer
+                pintar_tiempo();
+               
+
+                //Aparición y reaparición de los donuts
+                if(donut_x > tablero.width/32){     //Si el valor del donut es más grande que el tablero
+                    pintar_donuts();
+                }else{
+                    donut_x = tablero.width - tablero.width/16;
+                    donut_y = valores_y();
+                }
                 
-                //Movimineto de la pelota
+                
+                /*
+                if (tiempo == 3){
+                    pintar_donuts2();
+                }*/
+                
+                //Movimineto de homer
                 if(upPress) {
                     if(pelota_y < 100){      //Para poner un borde artificial y que no nos salgamos del mapa
                         pelota_y -= 0;
@@ -150,8 +204,12 @@ window.onload = function(){
                 
                 //Movimiento de los donuts
                 donut_x -= 2*dx_donut;
+                donut_x2 -= 2*dx_donut;
+
+                
             }
-            setInterval(pintar, 20);
+            const intervalo = setInterval(pintar, 15);
+            const time = setInterval(incremento_tiempo, 1000);  //incrementamos el tiempo cuando pasa 1s
             
         }
         else{
