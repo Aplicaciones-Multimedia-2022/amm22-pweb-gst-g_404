@@ -147,7 +147,24 @@ window.onload = function(){
             obj_brocoli = new brocoli();
 
             function colision(){ //¿como hacerlo?
+              var colision = false;
+              var Hx1 = pelota_x;
+              var Hx2 = pelota_x + 80;//ancho homer
+              var Hy1 = pelota_y;
+              var Hy2 = pelota_y + 80;
+              if(Hx2 > donut_x && (pelota_y-35 == donut_y-35)){
+                return colision = true;
+              }
+              else {
+                return colision = false;
+              }
+              function hayColision(colision){
+                if (this.colision == true){
+                  //borrar del mapa el donut o brocoli
+                  
 
+                }
+              }
             }
             /*
             //Función para pintar donuts
