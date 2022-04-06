@@ -34,64 +34,7 @@ window.onload = function(){
 
             /*---------------------------------------------------------------------------*/
             //Inicialización de las alturas de los donuts
-            var donut_y = Math.random();
-
-            if(donut_y > 0 && donut_y < 0.2){
-                donut_y = 83;
-            }else if(donut_y >= 0.2 && donut_y < 0.4){
-                donut_y = 166;
-            }else if(donut_y >= 0.4 && donut_y < 0.6){
-                donut_y = 250;
-            }else if(donut_y >= 0.6 && donut_y < 0.8){
-                donut_y = 333;
-            }else{
-                donut_y = 416;
-            }
-
-
-            if(brocoli_y > 0 && brocoli_y < 0.2){
-                brocoli_y = 83;
-            }else if(brocoli_y >= 0.2 && brocoli_y < 0.4){
-                brocoli_y = 166;
-            }else if(donut_y2 >= 0.4 && donut_y2 < 0.6){
-                donut_y = 250;
-            }else if(donut_y2 >= 0.6 && donut_y2 < 0.8){
-                donut_y2 = 333;
-            }else{
-                donut_y2 = 416;
-            }
-
-            //Función para los valores aleatorios de los donuts al llegar al final
-            function valores_y(){
-                var donut_y = Math.random();
-                if(donut_y > 0 && donut_y < 0.2){
-                    donut_y = 83;
-                }else if(donut_y >= 0.2 && donut_y < 0.4){
-                    donut_y = 166;
-                }else if(donut_y >= 0.4 && donut_y < 0.6){
-                    donut_y = 250;
-                }else if(donut_y >= 0.6 && donut_y < 0.8){
-                    donut_y = 333;
-                }else{
-                    donut_y = 416;
-                }
-                return donut_y;
-            }
-            function valores_y2(){
-                var donut_y2 = Math.random();
-                if(donut_y2 > 0 && donut_y2 < 0.2){
-                    donut_y2 = 83;
-                }else if(donut_y2 >= 0.2 && donut_y2 < 0.4){
-                    donut_y2 = 166;
-                }else if(donut_y2 >= 0.4 && donut_y2 < 0.6){
-                    donut_y2 = 250;
-                }else if(donut_y2 >= 0.6 && donut_y2 < 0.8){
-                    donut_y2 = 333;
-                }else{
-                    donut_y2 = 416;
-                }
-                return donut_y2;
-            }
+           var donut_y = Math.random();
 
             function obtener_y(y){
                 var y = Math.random();
@@ -185,7 +128,7 @@ window.onload = function(){
             let brocoli= function(){
               this.pintar_brocoli = function(){ //Función para pintar a homer
                 var img_b = document.getElementById("brocoli");
-                ctx.drawImage(img_b, 600, 600, 700, 700, donut_x, donut_y, 80, 80);
+                ctx.drawImage(img_b, 600, 600, 700, 700, donut_x, donut_y-35, 80, 80);
                 };
             }
             obj_brocoli = new brocoli();
@@ -219,9 +162,6 @@ window.onload = function(){
                 ctx.fillText("Tiempo de juego: "+ tiempo + " segundos", 10, 20);
             }
 
-            function colision(){ //¿como hacerlo?
-
-            }
             /*---------------------------------------------------------------------------*/
                 //BUCLE DEL JUEGO//
             /*---------------------------------------------------------------------------*/
@@ -229,7 +169,7 @@ window.onload = function(){
 
                 ctx.clearRect(0, 0, tablero.width, tablero.height); //Limpiamos el tablero
                 tab();  //Dibujamos el tablero
-                
+
                 pers_homer.pintar_homer();
                 //obj_donut.pintar_donuts();
                 //obj_brocoli.pintar_brocoli();
@@ -241,6 +181,7 @@ window.onload = function(){
 
                 if(donut_x > tablero.width/32){
                     obj_brocoli.pintar_brocoli();
+                    //obj_donut.pintar_donuts();
                 }else{
                     donut_x = tablero.width - tablero.width/16
                     donut_y = obtener_y(donut_y);
