@@ -148,17 +148,11 @@ window.onload = function(){
                 */
             }
 
-            //Función para pintar a homer
-            function pintar_homer() {
-
-                //ctx.drawImage(img, 100, 100, 200, 140);
-
-            }
             var homer(vidas, score) {
               this.vidas =3 ;
               this.score = 0;
               homer.posicion=;
-              homer.pintar_homer=function pintar_homer(){
+              homer.pintar_homer=function pintar_homer(){ //Función para pintar a homer
                 var img = document.getElementById("homer");
                 ctx.drawImage(img, 50, 25, 500, 500, pelota_x, pelota_y-35, 80, 80);
             }
