@@ -20,7 +20,7 @@ window.onload = function(){
             var pelota_radio = 20;
             var pelota_x = tablero.width/16;
             var pelota_y = tablero.height/2;
-            alert(pelota_y);
+
 
             //variables movimiento donuts
             var donut_x = (tablero.width - tablero.width/16);   //ancho original - 1/16 ancho
@@ -150,19 +150,25 @@ window.onload = function(){
 
             //Función para pintar a homer
             function pintar_homer() {
-                var img = document.getElementById("homer");
-                //ctx.drawImage(img, 100, 100, 200, 140);
-                ctx.drawImage(img, 50, 25, 500, 500, pelota_x, pelota_y-35, 80, 80);
 
-                /*var homero = new Image();
-                homero.src = '../imagenes/Jugador-Homer.jpeg'
-                homero.onload = function() {
-                    ctx.drawImage(homero.src, 200, 250);
-                };*/
+                //ctx.drawImage(img, 100, 100, 200, 140);
+
+            }
+            var homer(vidas, score) {
+              this.vidas =3 ;
+              this.score = 0;
+              homer.posicion=;
+              homer.pintar_homer=function pintar_homer(){
+                var img = document.getElementById("homer");
+                ctx.drawImage(img, 50, 25, 500, 500, pelota_x, pelota_y-35, 80, 80);
             }
 
+
+
+            }*/
+
             //Función para pintar donuts
-            function pintar_donuts(){
+            function pintar_donuts(){ //¿como hacer una imagen objeto?
                 ctx.beginPath();
                 ctx.arc(donut_x, donut_y , pelota_radio, 0, Math.PI*2);
                 ctx.fillStyle = "green";
@@ -186,7 +192,7 @@ window.onload = function(){
                 ctx.fillText("Tiempo de juego: "+ tiempo + " segundos", 10, 20);
             }
 
-            function colision(){ //para seguir haciendo
+            function colision(){ //¿como hacerlo?
 
             }
 
@@ -199,6 +205,7 @@ window.onload = function(){
                 tab();  //Dibujamos el tablero
                 pintar_homer(); //Pintamos a homer
                 pintar_tiempo(); // temporizador
+                homer = new homer.pintar_homer;
 
 
                 //Aparición y reaparición de los donuts
