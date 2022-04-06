@@ -36,6 +36,19 @@ window.onload = function(){
             //Inicialización de las alturas de los donuts
            var donut_y = Math.random();
 
+            if(donut_y > 0 && donut_y < 0.2){
+                donut_y = 83;
+            }else if(donut_y >= 0.2 && donut_y < 0.4){
+                donut_y = 166;
+            }else if(donut_y >= 0.4 && donut_y < 0.6){
+                donut_y = 250;
+            }else if(donut_y >= 0.6 && donut_y < 0.8){
+                donut_y = 333;
+            }else{
+                donut_y = 416;
+            }
+
+
             function obtener_y(y){
                 var y = Math.random();
                 if(y >= 0 && y < 0.2){
