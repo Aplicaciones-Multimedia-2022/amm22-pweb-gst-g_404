@@ -22,10 +22,15 @@ window.onload = function(){
             var pelota_y = tablero.height/2;
 
 
-            //variables movimiento donuts
+            //variables movimiento donuts y brocolis
             var donut_x = (tablero.width - tablero.width/16);   //ancho original - 1/16 ancho
-            var donut_x2 = (tablero.width - tablero.width/16);
+            //var donut_x2 = (tablero.width - tablero.width/16);
             var dx_donut = 1;
+
+            //variables de movimiento brocoli CREO QUE SE PUEDEN USAR LAS MISMAS PARA AMBOS
+            var brocoli_x = (tablero.width - tablero.width/16);
+            var brocoli_y = Math.random();
+
 
             /*---------------------------------------------------------------------------*/
             //Inicialización de las alturas de los donuts
@@ -43,12 +48,11 @@ window.onload = function(){
                 donut_y = 416;
             }
 
-            var donut_y2 = Math.random();
 
-            if(donut_y2 > 0 && donut_y2 < 0.2){
-                donut_y2 = 83;
-            }else if(donut_y2 >= 0.2 && donut_y2 < 0.4){
-                donut_y = 166;
+            if(brocoli_y > 0 && brocoli_y < 0.2){
+                brocoli_y = 83;
+            }else if(brocoli_y >= 0.2 && brocoli_y < 0.4){
+                brocoli_y = 166;
             }else if(donut_y2 >= 0.4 && donut_y2 < 0.6){
                 donut_y = 250;
             }else if(donut_y2 >= 0.6 && donut_y2 < 0.8){
@@ -120,14 +124,6 @@ window.onload = function(){
                 }
             }
 
-            /* //Objeto de homer
-            var homer = new Image(100,100);
-            homer.src = '../imagenes/Jugador-Homer.png';
-            homer.pos_y = tablero.height/2;
-            homer.pos_x = tablero.width/4;
-            */
-
-
             /*---------------------------------------------------------------------------*/
                 //FUNCIONES DEL JUEGO//
             /*---------------------------------------------------------------------------*/
@@ -147,20 +143,39 @@ window.onload = function(){
                 ctx.stroke();
                 */
             }
-
-            var homer(vidas, score) {
-              this.vidas =3 ;
-              this.score = 0;
-              homer.posicion=;
-              homer.pintar_homer=function pintar_homer(){ //Función para pintar a homer
+            //obejto Homer
+            var homer = function(vidas, score){
+              this.vidas = vidas ;
+              this.score = score;
+              //homer.posicion = ;
+              homer.pintar_homer = function(){ //Función para pintar a homer
                 var img = document.getElementById("homer");
                 ctx.drawImage(img, 50, 25, 500, 500, pelota_x, pelota_y-35, 80, 80);
+                }
+            }
+            //objeto donuts
+            var donuts = function() {
+              donuts.pintar = function(){ //Función para pintar a homer
+                var img = document.getElementById("donuts");
+                ctx.drawImage(img, 50, 25, 500, 500, donut_x, donut_y, 80, 80);
+                }
+
+            }
+            //objeto brocoli
+            var brocoli= function(){
+              brocoli.pintar = function(){ //Función para pintar a homer
+                var img = document.getElementById("brocoli");
+                ctx.drawImage(img, 50, 25, 500, 500, donut_x, donut_y, 80, 80);
+                }
             }
 
 
 
-            }*/
 
+            function colision(){ //¿como hacerlo?
+
+            }
+            /*
             //Función para pintar donuts
             function pintar_donuts(){ //¿como hacer una imagen objeto?
                 ctx.beginPath();
@@ -178,7 +193,7 @@ window.onload = function(){
                 ctx.fill();
                 ctx.closePath();
             }
-
+            */
 
             function pintar_tiempo(){
                 ctx.font = "16px Arial";
@@ -197,11 +212,15 @@ window.onload = function(){
 
                 ctx.clearRect(0, 0, tablero.width, tablero.height); //Limpiamos el tablero
                 tab();  //Dibujamos el tablero
-                pintar_homer(); //Pintamos a homer
+                homer = new homer(3,0);
+                homer.pintar_homer;
+                //pintar_homer(); //Pintamos a homer
                 pintar_tiempo(); // temporizador
-                homer = new homer.pintar_homer;
+                //array de donuts
+                //array de brocolis
 
 
+/*
                 //Aparición y reaparición de los donuts
                 if(donut_x > tablero.width/32 && donut_x2 > tablero.width/32){ //Si el valor del donut es más grande que el tablero
                   if(flag%2==0){
@@ -217,7 +236,7 @@ window.onload = function(){
                     donut_y2 = valores_y2();
                     flag++;
                 }
-
+*/
                 //Movimineto de homer
                 if(upPress) {
                     if(pelota_y < 100){      //Para poner un borde artificial y que no nos salgamos del mapa
