@@ -143,15 +143,15 @@ window.onload = function(){
                 ctx.stroke();
                 */
             }
-            //obejto Homer
-            var homer = function(vidas, score){
+            //objeto Homer
+            let homer = function(vidas, score){
               this.vidas = vidas ;
               this.score = score;
               //homer.posicion = ;
-              homer.pintar_homer = function(){ //Función para pintar a homer
+              this.pintar_homer = function(){ //Función para pintar a homer
                 var img = document.getElementById("homer");
                 ctx.drawImage(img, 50, 25, 500, 500, pelota_x, pelota_y-35, 80, 80);
-                }
+                };
             }
             //objeto donuts
             var donuts = function() {
@@ -200,7 +200,7 @@ window.onload = function(){
             function colision(){ //¿como hacerlo?
 
             }
-
+            pers_homer = new homer(3,0);
             /*---------------------------------------------------------------------------*/
                 //BUCLE DEL JUEGO//
             /*---------------------------------------------------------------------------*/
@@ -208,8 +208,8 @@ window.onload = function(){
 
                 ctx.clearRect(0, 0, tablero.width, tablero.height); //Limpiamos el tablero
                 tab();  //Dibujamos el tablero
-                homer = new homer(3,0);
-                homer.pintar_homer;
+                
+                pers_homer.pintar_homer();
                 //pintar_homer(); //Pintamos a homer
                 pintar_tiempo(); // temporizador
                 //array de donuts
