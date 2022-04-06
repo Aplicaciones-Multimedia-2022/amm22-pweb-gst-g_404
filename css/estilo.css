@@ -188,7 +188,7 @@
 .contenedor_juego{
   background-color: #f2f2f200;
   width: 75%;
-  
+
 
   display: flex;
   margin-top: 1%;
@@ -197,9 +197,15 @@
   flex-direction: column;
   justify-content: center;  /* eje x*/
   align-items: center;      /* eje y*/
-  
+
 }
 
 #homer{
+  display: none;
+}
+#brocoli{
+  display: none;
+}
+#donuts{
   display: none;
 }

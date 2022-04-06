@@ -168,10 +168,6 @@ window.onload = function(){
                 ctx.drawImage(img, 50, 25, 500, 500, donut_x, donut_y, 80, 80);
                 }
             }
-
-
-
-
             function colision(){ //¿como hacerlo?
 
             }
