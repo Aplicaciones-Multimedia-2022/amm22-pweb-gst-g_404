@@ -92,6 +92,22 @@ window.onload = function(){
                 }
                 return donut_y2;
             }
+
+            function obtener_y(y){
+                var y = Math.random();
+                if(y >= 0 && y < 0.2){
+                    y = 83;
+                }else if(y >= 0.2 && y < 0.4){
+                    y = 166;
+                }else if(y >= 0.4 && y < 0.6){
+                    y = 250;
+                }else if(y >= 0.6 && y < 0.8){
+                    y = 333;
+                }else{
+                    y = 416;
+                }
+                return y;
+            }
             /*---------------------------------------------------------------------------*/
             //Variable y función para incrementar el contador de tiempo
             var tiempo = 0;
@@ -149,25 +165,31 @@ window.onload = function(){
               this.score = score;
               //homer.posicion = ;
               this.pintar_homer = function(){ //Función para pintar a homer
-                var img = document.getElementById("homer");
-                ctx.drawImage(img, 50, 25, 500, 500, pelota_x, pelota_y-35, 80, 80);
+                var img_h = document.getElementById("homer");
+                ctx.drawImage(img_h, 50, 25, 500, 500, pelota_x, pelota_y-35, 80, 80);
+                //El 80, 80 es el tamaño de la imagen. Lo tenemos que tener en cuenta para las colisiones.
                 };
             }
-            //objeto donuts
-            var donuts = function() {
-              donuts.pintar = function(){ //Función para pintar a homer
-                var img = document.getElementById("donuts");
-                ctx.drawImage(img, 50, 25, 500, 500, donut_x, donut_y, 80, 80);
-                }
+            pers_homer = new homer(3,0);
 
+            //objeto donuts
+            let donuts = function() {
+              this.pintar_donuts = function(){ //Función para pintar a homer
+                var img_d = document.getElementById("donuts");
+                ctx.drawImage(img_d, 400, 250, 500, 500, donut_x, donut_y, 80, 80);
+                };
             }
+            obj_donut = new donuts();
+
             //objeto brocoli
-            var brocoli= function(){
-              brocoli.pintar = function(){ //Función para pintar a homer
-                var img = document.getElementById("brocoli");
-                ctx.drawImage(img, 50, 25, 500, 500, donut_x, donut_y, 80, 80);
-                }
+            let brocoli= function(){
+              this.pintar_brocoli = function(){ //Función para pintar a homer
+                var img_b = document.getElementById("brocoli");
+                ctx.drawImage(img_b, 600, 600, 700, 700, donut_x, donut_y, 80, 80);
+                };
             }
+            obj_brocoli = new brocoli();
+
             function colision(){ //¿como hacerlo?
 
             }
@@ -200,7 +222,6 @@ window.onload = function(){
             function colision(){ //¿como hacerlo?
 
             }
-            pers_homer = new homer(3,0);
             /*---------------------------------------------------------------------------*/
                 //BUCLE DEL JUEGO//
             /*---------------------------------------------------------------------------*/
@@ -210,12 +231,20 @@ window.onload = function(){
                 tab();  //Dibujamos el tablero
                 
                 pers_homer.pintar_homer();
+                //obj_donut.pintar_donuts();
+                //obj_brocoli.pintar_brocoli();
                 //pintar_homer(); //Pintamos a homer
                 pintar_tiempo(); // temporizador
                 //array de donuts
                 //array de brocolis
 
 
+                if(donut_x > tablero.width/32){
+                    obj_brocoli.pintar_brocoli();
+                }else{
+                    donut_x = tablero.width - tablero.width/16
+                    donut_y = obtener_y(donut_y);
+                }
 /*
                 //Aparición y reaparición de los donuts
                 if(donut_x > tablero.width/32 && donut_x2 > tablero.width/32){ //Si el valor del donut es más grande que el tablero
