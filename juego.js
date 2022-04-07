@@ -156,7 +156,7 @@ window.onload = function(){
             var colisionB = false; //colision con brocoli
             var colisionD = false; //colision con donut
 
-            function colision(col, x){ //¿como hacerlo?
+            function colision(col, x){
               if((pelota_x+ancH)>x && ((pelota_y)==(donut_y))){
                 col = true;
               }
@@ -169,6 +169,16 @@ window.onload = function(){
                 ctx.font = "16px Arial";
                 ctx.fillStyle = "black";
                 ctx.fillText("Tiempo de juego: "+ tiempo + " segundos", 10, 20);
+            }
+
+            function pintar_vidas(){
+                ctx.font = "16px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText("Vidas: "+ pers_homer.vidas, 10, 20);
+            }
+
+            function desaparecer(){//que desaparezca el objeto cuando colisione
+              
             }
 
             /*---------------------------------------------------------------------------*/
@@ -184,7 +194,8 @@ window.onload = function(){
                 //obj_donut.pintar_donuts();
                 //obj_brocoli.pintar_brocoli();
                 //pintar_homer(); //Pintamos a homer
-                pintar_tiempo(); // temporizador
+                //pintar_tiempo(); // temporizador
+                pintar_vidas();
                 //array de donuts
                 //array de brocolis
 
@@ -201,7 +212,8 @@ window.onload = function(){
 
                 if(colision(colisionB, brocoli_x)==true){
                   pers_homer.vidas -=1;
-                  clearInterval(intervalo);
+                  //pintar_vidas();
+                  //clearInterval(intervalo);
                 }else if(colision(colisionD, donut_x) == true){
                   pers_homer.score +=1;
                 }
