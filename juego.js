@@ -21,6 +21,11 @@ window.onload = function(){
             var pelota_x = tablero.width/16;
             var pelota_y = tablero.height/2;
 
+            //tamaño de imagenes 80x80 (homer)
+            var altH=80;
+            var ancH=80;
+
+
 
             //variables movimiento donuts y brocolis
             var donut_x = (tablero.width - tablero.width/16);   //ancho original - 1/16 ancho
@@ -29,17 +34,17 @@ window.onload = function(){
 
             //variables de movimiento brocoli CREO QUE SE PUEDEN USAR LAS MISMAS PARA AMBOS
             var brocoli_x = (tablero.width - tablero.width/16);
-            var brocoli_y = Math.random();
+          //  var brocoli_y = Math.random();
 
 
             /*---------------------------------------------------------------------------*/
             //Inicialización de las alturas de los donuts
-           var donut_y = Math.random();
+            var donut_y = Math.random();
 
             if(donut_y >= 0 && donut_y < 0.2){
-                donut_y = 83;
+                donut_y = (tablero.height/2)-166;
             }else if(donut_y >= 0.2 && donut_y < 0.4){
-                donut_y = 166;
+                donut_y = (tablero.height/2) - 83;
             }else if(donut_y >= 0.4 && donut_y < 0.6){
                 donut_y = 250;
             }else if(donut_y >= 0.6 && donut_y < 0.8){
@@ -47,14 +52,12 @@ window.onload = function(){
             }else{
                 donut_y = 416;
             }
-
-
             function obtener_y(y){
                 var y = Math.random();
                 if(y >= 0 && y < 0.2){
-                    y = 83;
+                    y = (tablero.height/2)-166;
                 }else if(y >= 0.2 && y < 0.4){
-                    y = 166;
+                    y = (tablero.height/2)-83;
                 }else if(y >= 0.4 && y < 0.6){
                     y = 250;
                 }else if(y >= 0.6 && y < 0.8){
@@ -96,6 +99,8 @@ window.onload = function(){
                 }
             }
 
+
+
             /*---------------------------------------------------------------------------*/
                 //FUNCIONES DEL JUEGO//
             /*---------------------------------------------------------------------------*/
@@ -122,7 +127,7 @@ window.onload = function(){
               //homer.posicion = ;
               this.pintar_homer = function(){ //Función para pintar a homer
                 var img_h = document.getElementById("homer");
-                ctx.drawImage(img_h, 50, 25, 500, 500, pelota_x, pelota_y-35, 80, 80);
+                ctx.drawImage(img_h, 50, 25, 500, 500, pelota_x, pelota_y-35, altH, ancH);
                 //El 80, 80 es el tamaño de la imagen. Lo tenemos que tener en cuenta para las colisiones.
                 };
             }
@@ -132,7 +137,7 @@ window.onload = function(){
             let donuts = function() {
               this.pintar_donuts = function(){ //Función para pintar a homer
                 var img_d = document.getElementById("donuts");
-                ctx.drawImage(img_d, 400, 250, 500, 500, donut_x, donut_y, 80, 80);
+                ctx.drawImage(img_d, 400, 250, 500, 500, donut_x, donut_y, altH, ancH);
                 };
             }
             obj_donut = new donuts();
@@ -141,33 +146,24 @@ window.onload = function(){
             let brocoli= function(){
               this.pintar_brocoli = function(){ //Función para pintar a homer
                 var img_b = document.getElementById("brocoli");
-                ctx.drawImage(img_b, 600, 600, 700, 700, donut_x, donut_y-35, 80, 80);
+                ctx.drawImage(img_b, 600, 600, 700, 700, brocoli_x, donut_y-35, 80, 80);
                 };
             }
             obj_brocoli = new brocoli();
 
-            function colision(){ //¿como hacerlo?
 
-            }
-            /*
-            //Función para pintar donuts
-            function pintar_donuts(){ //¿como hacer una imagen objeto?
-                ctx.beginPath();
-                ctx.arc(donut_x, donut_y , pelota_radio, 0, Math.PI*2);
-                ctx.fillStyle = "green";
-                ctx.fill();
-                ctx.closePath();
+            //variables para detectar la colision
+            var colisionB = false; //colision con brocoli
+            var colisionD = false; //colision con donut
+
+            function colision(col, x){ //¿como hacerlo?
+              if((pelota_x+ancH)>x && ((pelota_y)==(donut_y))){
+                col = true;
+              }
+              return col;
             }
 
 
-            function pintar_donuts2(){
-                ctx.beginPath();
-                ctx.arc(donut_x2, donut_y2, pelota_radio, 0, Math.PI*2);
-                ctx.fillStyle = "blue";
-                ctx.fill();
-                ctx.closePath();
-            }
-            */
 
             function pintar_tiempo(){
                 ctx.font = "16px Arial";
@@ -182,8 +178,9 @@ window.onload = function(){
 
                 ctx.clearRect(0, 0, tablero.width, tablero.height); //Limpiamos el tablero
                 tab();  //Dibujamos el tablero
-
+                //colision();
                 pers_homer.pintar_homer();
+
                 //obj_donut.pintar_donuts();
                 //obj_brocoli.pintar_brocoli();
                 //pintar_homer(); //Pintamos a homer
@@ -192,37 +189,32 @@ window.onload = function(){
                 //array de brocolis
 
 
-                if(donut_x > tablero.width/32){
+                if(brocoli_x > tablero.width/32){
                     obj_brocoli.pintar_brocoli();
+
                     //obj_donut.pintar_donuts();
                 }else{
-                    donut_x = tablero.width - tablero.width/16
+                    brocoli_x = tablero.width - tablero.width/16
                     donut_y = obtener_y(donut_y);
                 }
-/*
-                //Aparición y reaparición de los donuts
-                if(donut_x > tablero.width/32 && donut_x2 > tablero.width/32){ //Si el valor del donut es más grande que el tablero
-                  if(flag%2==0){
-                      pintar_donuts();
-                  }else{
-                    pintar_donuts2();
-                  }
 
-                }else{
-                    donut_x = tablero.width - tablero.width/16;
-                    donut_x2 = tablero.width -tablero.width/16;
-                    donut_y = valores_y();
-                    donut_y2 = valores_y2();
-                    flag++;
+
+                if(colision(colisionB, brocoli_x)==true){
+                  pers_homer.vidas -=1;
+                  clearInterval(intervalo);
+                }else if(colision(colisionD, donut_x) == true){
+                  pers_homer.score +=1;
                 }
-*/
+
+
+
                 //Movimineto de homer
                 if(upPress) {
                     if(pelota_y < 100){      //Para poner un borde artificial y que no nos salgamos del mapa
                         pelota_y -= 0;
                     }
                     else{
-                        pelota_y -= 83;
+                        pelota_y += -83;
                         upPress = false;        //Para que las pulsaciones sean finitas
                     }
 
@@ -238,8 +230,8 @@ window.onload = function(){
                 }
 
                 //Movimiento de los donuts
-                donut_x -= 2*dx_donut;
-                donut_x2 -= 2*dx_donut;
+                brocoli_x -= 2*dx_donut;
+
 
 
             }
