@@ -163,8 +163,6 @@ window.onload = function(){
               return col;
             }
 
-
-
             function pintar_tiempo(){
                 ctx.font = "16px Arial";
                 ctx.fillStyle = "black";
@@ -178,7 +176,7 @@ window.onload = function(){
             }
 
             function desaparecer(){//que desaparezca el objeto cuando colisione
-              
+
             }
 
             /*---------------------------------------------------------------------------*/
