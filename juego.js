@@ -179,6 +179,11 @@ window.onload = function(){
 
             }
 
+            //Intento crear la matriz de objetos
+            const brocolis = [];
+            brocolis[0] = new brocoli();
+            brocolis[1] = new brocoli();
+
             /*---------------------------------------------------------------------------*/
                 //BUCLE DEL JUEGO//
             /*---------------------------------------------------------------------------*/
@@ -186,7 +191,6 @@ window.onload = function(){
 
                 ctx.clearRect(0, 0, tablero.width, tablero.height); //Limpiamos el tablero
                 tab();  //Dibujamos el tablero
-                //colision();
                 pers_homer.pintar_homer();
 
                 //obj_donut.pintar_donuts();
@@ -199,7 +203,8 @@ window.onload = function(){
 
 
                 if(brocoli_x > tablero.width/32){
-                    obj_brocoli.pintar_brocoli();
+                    brocolis[0].pintar_brocoli();
+                    brocolis[1].pintar_brocoli();
 
                     //obj_donut.pintar_donuts();
                 }else{
