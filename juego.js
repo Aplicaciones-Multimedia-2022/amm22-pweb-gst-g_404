@@ -186,12 +186,7 @@ window.onload = function(){
 
                 ctx.clearRect(0, 0, tablero.width, tablero.height); //Limpiamos el tablero
                 tab();  //Dibujamos el tablero
-                //colision();
                 pers_homer.pintar_homer();
-
-                //obj_donut.pintar_donuts();
-                //obj_brocoli.pintar_brocoli();
-                //pintar_homer(); //Pintamos a homer
                 //pintar_tiempo(); // temporizador
                 pintar_vidas();
                 //array de donuts
