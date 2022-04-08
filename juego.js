@@ -207,14 +207,21 @@ window.onload = function(){
                     donut_y = obtener_y(donut_y);
                 }
 
-
+                //colisiones
                 if(colision(colisionB, brocoli_x)==true){
-                  pers_homer.vidas -=1;
-                  //pintar_vidas();
-                  //clearInterval(intervalo);
+                    pers_homer.vidas -=1;
+                    brocoli_x = tablero.width- tablero.width/16;
+                    donut_y = obtener_y(donut_y);
                 }else if(colision(colisionD, donut_x) == true){
-                  pers_homer.score +=1;
+                    pers_homer.score +=1;
+                    donut_x = tablero.width - tablero.width/16;
+                    //Ver para el caso del donut las variables y
+                }else if(pers_homer.vidas == 0){
+                    clearInterval(intervalo);
+                    alert('Has perdido todas las vidas');
+                    alert('Pulse el botón de inicio para reiniciar el juego');
                 }
+
 
 
 
