@@ -61,11 +61,29 @@ window.onload = function(){
                     this.x = this.x + this.velocidad;
                 }
             }
+
             function tab(){
                 ctx.beginPath();
                 ctx.fillStyle = 'lightpink';   //cambiar el color.
                 ctx.fillRect(0, 0, 800, 500);
             }
+            /*---------------------------------------------------------------------------*/
+            //Función para las alturas de los objetos aleatorios
+            function obtener_y(y){
+                if(y >= 0 && y < 0.2){
+                    y = (tablero.height/2)-166;
+                }else if(y >= 0.2 && y < 0.4){
+                    y = (tablero.height/2)-83;
+                }else if(y >= 0.4 && y < 0.6){
+                    y = 250;
+                }else if(y >= 0.6 && y < 0.8){
+                    y = 333;
+                }else{
+                    y = 416;
+                }
+                return y;
+            }
+            /*---------------------------------------------------------------------------*/
 
             const x = tablero.width/16;
             const y = tablero.height/2;
@@ -76,6 +94,19 @@ window.onload = function(){
 
             const brocolis_ = [];
             const donuts_ = [];
+
+            function crearBrocolis(){
+                setInterval(() => {
+                    const x = tablero.width - tablero.width/16;
+                    const a = Math.random();
+                    const y = obtener_y(a);
+                    const altura = 80;
+                    const ancho = 80;
+                    const velocidad = -1;
+                    brocolis_.push(new Brocoli(x, y, altura, ancho, velocidad));
+                    console.log(brocolis_);
+                }, 1000);
+            }
 
 
 
@@ -112,6 +143,16 @@ window.onload = function(){
                 ctx.clearRect(0, 0, tablero.width, tablero.height);
                 tab();
                 jugador.pintar();
+
+
+                brocolis_.forEach((brocoli) => {
+
+                    brocoli.actualizar()  
+                    console.log(brocolis_)
+    
+            
+                })
+                
 
 
                 //Movimineto del jugador
