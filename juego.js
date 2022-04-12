@@ -8,11 +8,13 @@ window.onload = function(){
             var ctx = tablero.getContext("2d");
 
             class Homer{
-                constructor(x, y, alt, ancho){
+                constructor(x, y, alt, ancho, vidas, score){
                     this.x = x;
                     this.y = y;
                     this.alt = alt;
                     this.ancho = ancho;
+                    this.vidas = vidas;
+                    this.score = score;
                 } 
                 
                 pintar(){
@@ -33,7 +35,7 @@ window.onload = function(){
 
                 pintar(){
                     var img = document.getElementById("brocoli");
-                    ctx.drawImage(img, 550, 500, 850, 800, this.x, this.y - 35, alt, ancho);
+                    ctx.drawImage(img, 550, 500, 850, 800, this.x, this.y - 35, this.alt, this.ancho);
                 }
 
                 actualizar(){
@@ -53,7 +55,7 @@ window.onload = function(){
 
                 pintar(){
                     var img = document.getElementById("donuts");
-                    ctx.drawImage(img_d, 50, 50, 800, 800, this.x, this.y - 35, alt, ancho);
+                    ctx.drawImage(img_d, 50, 50, 800, 800, this.x, this.y - 35, this.alt, this.ancho);
                 }
 
                 actualizar(){
@@ -89,25 +91,29 @@ window.onload = function(){
             const y = tablero.height/2;
             const altura = 80;
             const ancho = 80;
+            const vidas = 3;
 
-            const jugador = new Homer(x, y, altura, ancho);
+            const jugador = new Homer(x, y, altura, ancho, vidas, 0);
 
             const brocolis_ = [];
             const donuts_ = [];
 
             function crearBrocolis(){
-                setInterval(() => {
-                    const x = tablero.width - tablero.width/16;
-                    const a = Math.random();
-                    const y = obtener_y(a);
-                    const altura = 80;
-                    const ancho = 80;
-                    const velocidad = -1;
-                    brocolis_.push(new Brocoli(x, y, altura, ancho, velocidad));
-                    console.log(brocolis_);
-                }, 1000);
+                if(jugador.vidas > 0){
+                    intervalo = setInterval(() => {
+                        const x = tablero.width - tablero.width/16;
+                        const a = Math.random();
+                        const y = obtener_y(a);
+                        const altura = 80;
+                        const ancho = 80;
+                        const velocidad = -1;
+                        brocolis_.push(new Brocoli(x, y, altura, ancho, velocidad));
+                        console.log(brocolis_);
+                    }, 1500);
+                }else{
+                    return null;
+                }
             }
-
 
 
             /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -138,20 +144,41 @@ window.onload = function(){
             }
             /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
+            let animationId
             function jugar(){
-                requestAnimationFrame(jugar);
+                animationId = requestAnimationFrame(jugar);
                 ctx.clearRect(0, 0, tablero.width, tablero.height);
                 tab();
                 jugador.pintar();
+                console.log(jugador.vidas)
 
 
-                brocolis_.forEach((brocoli) => {
+                brocolis_.forEach((brocoli, index) => {
+                    brocoli.actualizar() 
+                    
+                    //vamos a eliminar los proyectiles cuando se salgan del canvas
+                    //para evitar tener infinitos objetos
+                    if (brocoli.x + ancho < 0){
+                        setTimeout(() => {
+                            brocolis_.splice(index, 1)
+                        }, 0)
+                    }
 
-                    brocoli.actualizar()  
-                    console.log(brocolis_)
-    
-            
+                    //Colisiones de homer con los brocolis
+                    if ((brocoli.x < jugador.x + jugador.ancho) && (brocoli.x + brocoli.ancho > jugador.x) && (brocoli.y == jugador.y)){
+                        jugador.vidas--;
+                        setTimeout(() => {
+                            brocolis_.splice(index, 1)
+                        }, 0)
+                    }
+
+                    //PARAMOS CUANDO NOS QUEDAMOS SIN VIDAS
+                    if (jugador.vidas == 0){
+                        cancelAnimationFrame(animationId)
+
+                    }
                 })
+                
                 
 
 
@@ -178,8 +205,14 @@ window.onload = function(){
             }
 
 
+            
+            if (jugador.vidas > 0){
+                jugar()
+                crearBrocolis();
 
-            jugar()
+            }else{
+                return;
+            }
 
 
         }
