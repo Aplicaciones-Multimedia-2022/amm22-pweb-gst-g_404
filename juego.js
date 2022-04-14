@@ -123,6 +123,13 @@ window.onload = function(){
                 ctx.fillText("Vidas: "+ jugador.vidas, 10, 20);
             }
 
+            function pintar_score(){
+                ctx.font = "16px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText("Score: "+ jugador.score, 80, 20);
+            }
+
+
             const brocolis_ = [];
             const donuts_ = [];
             const duff_ =[];
@@ -202,6 +209,7 @@ window.onload = function(){
                 tab();
                 jugador.pintar();
                 pintar_vidas();
+                pintar_score();
                 console.log(jugador.vidas)
 
                     //LOS BROCOLIS
