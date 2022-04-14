@@ -129,7 +129,7 @@ window.onload = function(){
                     const velocidad = -1;
                     brocolis_.push(new Brocoli(x, y, altura, ancho, velocidad));
                     console.log(brocolis_);
-                }, 3000);
+                }, 2000);
             }
 
             function crearDonuts(){
@@ -142,7 +142,7 @@ window.onload = function(){
                     const velocidad = -1;
                     donuts_.push(new Donut(x, y, altura, ancho, velocidad));
                     console.log(donuts_);
-                }, 3843);
+                }, 3500);
             }
 
             function crearDuff(){
@@ -153,9 +153,9 @@ window.onload = function(){
                     const altura = 80;
                     const ancho = 80;
                     const velocidad = -1;
-                    donuts_.push(new Duff(x, y, altura, ancho, velocidad));
-                    console.log(donuts_);
-                }, 5000);
+                    duff_.push(new Duff(x, y, altura, ancho, velocidad));
+                    console.log(duff_);
+                }, 6000);
             }
 
 
@@ -215,13 +215,12 @@ window.onload = function(){
                         }, 0)
                     }
 
-                    //PARAMOS CUANDO NOS QUEDAMOS SIN VIDAS
-                    if (jugador.vidas == 0){
-                        cancelAnimationFrame(animationId)
-
-                    }
-
                 })
+                //PARAMOS CUANDO NOS QUEDAMOS SIN VIDAS
+                if (jugador.vidas == 0){
+                    cancelAnimationFrame(animationId)
+
+                }
 
                     //LOS DONUTS
                 donuts_.forEach((donut, index) => {
@@ -235,7 +234,7 @@ window.onload = function(){
                         }, 0)
                     }
 
-                    //Colisiones de homer con los brocolis
+                    //Colisiones de homer con los donuts
                     if ((donut.x < jugador.x + jugador.ancho) && (donut.x + donut.ancho > jugador.x) && (donut.y == jugador.y)){
                         jugador.score++;
                         setTimeout(() => {
@@ -257,7 +256,7 @@ window.onload = function(){
                         }, 0)
                     }
 
-                    //Colisiones de homer con los brocolis
+                    //Colisiones de homer con las duff
                     if ((duff.x < jugador.x + jugador.ancho) && (duff.x + duff.ancho > jugador.x) && (duff.y == jugador.y)){
                         jugador.score+=10;
                         setTimeout(() => {
@@ -266,7 +265,6 @@ window.onload = function(){
                     }
 
                 })
-
 
                 //Movimineto del jugador
                 if(upPress) {
@@ -288,12 +286,14 @@ window.onload = function(){
                         downPress = false;
                     }
                 }
+
             }
 
             jugar();
+            crearDuff();
             crearDonuts();
             crearBrocolis();
-            crearDuff(); 
+
 
         }
     }
