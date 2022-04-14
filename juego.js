@@ -89,6 +89,8 @@ window.onload = function(){
                 ctx.fillStyle = 'lightpink';   //cambiar el color.
                 ctx.fillRect(0, 0, 800, 500);
             }
+
+
             /*---------------------------------------------------------------------------*/
             //Función para las alturas de los objetos aleatorios
             function obtener_y(y){
@@ -114,6 +116,12 @@ window.onload = function(){
             const vidas = 3;
 
             const jugador = new Homer(x, y, altura, ancho, vidas, 0);
+
+            function pintar_vidas(){
+                ctx.font = "16px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText("Vidas: "+ jugador.vidas, 10, 20);
+            }
 
             const brocolis_ = [];
             const donuts_ = [];
@@ -193,6 +201,7 @@ window.onload = function(){
                 ctx.clearRect(0, 0, tablero.width, tablero.height);
                 tab();
                 jugador.pintar();
+                pintar_vidas();
                 console.log(jugador.vidas)
 
                     //LOS BROCOLIS
