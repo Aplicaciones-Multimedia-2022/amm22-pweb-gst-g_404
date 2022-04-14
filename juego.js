@@ -15,8 +15,8 @@ window.onload = function(){
                     this.ancho = ancho;
                     this.vidas = vidas;
                     this.score = score;
-                } 
-                
+                }
+
                 pintar(){
                     var img = document.getElementById("homer");
                     ctx.drawImage(img, 50, 25, 450, 450, this.x, this.y-35, this.alt, this.ancho);
@@ -64,6 +64,26 @@ window.onload = function(){
                 }
             }
 
+            class Duff{
+                constructor(x, y, alt, ancho, velocidad){
+                    this.x = x;
+                    this.y = y;
+                    this.alt = alt;
+                    this.ancho = ancho;
+                    this.velocidad = velocidad;
+                }
+
+                pintar(){
+                    var img = document.getElementById("duff");
+                    ctx.drawImage(img, 50, 50, 800, 800, this.x, this.y - 35, this.alt, this.ancho);
+                }
+
+                actualizar(){
+                    this.pintar();
+                    this.x = this.x + this.velocidad;
+                }
+            }
+
             function tab(){
                 ctx.beginPath();
                 ctx.fillStyle = 'lightpink';   //cambiar el color.
@@ -97,6 +117,7 @@ window.onload = function(){
 
             const brocolis_ = [];
             const donuts_ = [];
+            const duff_ =[];
 
             function crearBrocolis(){
                 intervalo = setInterval(() => {
@@ -108,7 +129,7 @@ window.onload = function(){
                     const velocidad = -1;
                     brocolis_.push(new Brocoli(x, y, altura, ancho, velocidad));
                     console.log(brocolis_);
-                }, 1500);        
+                }, 3000);
             }
 
             function crearDonuts(){
@@ -121,7 +142,20 @@ window.onload = function(){
                     const velocidad = -1;
                     donuts_.push(new Donut(x, y, altura, ancho, velocidad));
                     console.log(donuts_);
-                }, 3000);     
+                }, 3843);
+            }
+
+            function crearDuff(){
+                intervalo = setInterval(() => {
+                    const x = tablero.width - tablero.width/16;
+                    const a = Math.random();
+                    const y = obtener_y(a);
+                    const altura = 80;
+                    const ancho = 80;
+                    const velocidad = -1;
+                    donuts_.push(new Duff(x, y, altura, ancho, velocidad));
+                    console.log(donuts_);
+                }, 5000);
             }
 
 
@@ -163,8 +197,8 @@ window.onload = function(){
 
                     //LOS BROCOLIS
                 brocolis_.forEach((brocoli, index) => {
-                    brocoli.actualizar() 
-                    
+                    brocoli.actualizar()
+
                     //vamos a eliminar los proyectiles cuando se salgan del canvas
                     //para evitar tener infinitos objetos
                     if (brocoli.x + ancho < 0){
@@ -186,12 +220,12 @@ window.onload = function(){
                         cancelAnimationFrame(animationId)
 
                     }
-            
+
                 })
 
                     //LOS DONUTS
                 donuts_.forEach((donut, index) => {
-                    donut.actualizar() 
+                    donut.actualizar()
 
                     //vamos a eliminar los objetos cuando se salgan del canvas
                     //para evitar tener infinitos objetos
@@ -210,8 +244,28 @@ window.onload = function(){
                     }
 
                 })
-                
-                
+
+                //LAS DUFF
+                duff_.forEach((duff, index) => {
+                    duff.actualizar()
+
+                    //vamos a eliminar los objetos cuando se salgan del canvas
+                    //para evitar tener infinitos objetos
+                    if (duff.x + ancho < 0){
+                        setTimeout(() => {
+                            duff_.splice(index, 1)
+                        }, 0)
+                    }
+
+                    //Colisiones de homer con los brocolis
+                    if ((duff.x < jugador.x + jugador.ancho) && (duff.x + duff.ancho > jugador.x) && (duff.y == jugador.y)){
+                        jugador.score+=10;
+                        setTimeout(() => {
+                            duff_.splice(index, 1)
+                        }, 0)
+                    }
+
+                })
 
 
                 //Movimineto del jugador
@@ -236,14 +290,11 @@ window.onload = function(){
                 }
             }
 
-
-            
-          
-            jugar()
-            crearBrocolis();
+            jugar();
             crearDonuts();
+            crearBrocolis();
+            crearDuff(); 
 
-        
         }
     }
 }
