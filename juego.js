@@ -35,7 +35,7 @@ window.onload = function(){
 
                 pintar(){
                     var img = document.getElementById("brocoli");
-                    ctx.drawImage(img, 550, 500, 850, 800, this.x, this.y - 35, this.alt, this.ancho);
+                    ctx.drawImage(img, 575, 500, 850, 800, this.x, this.y - 35, this.alt, this.ancho);
                 }
 
                 actualizar(){
@@ -55,7 +55,7 @@ window.onload = function(){
 
                 pintar(){
                     var img = document.getElementById("donuts");
-                    ctx.drawImage(img, 50, 50, 800, 800, this.x, this.y - 35, this.alt, this.ancho);
+                    ctx.drawImage(img, 75, 50, 800, 800, this.x, this.y - 35, this.alt, this.ancho);
                 }
 
                 actualizar(){
@@ -75,7 +75,7 @@ window.onload = function(){
 
                 pintar(){
                     var img = document.getElementById("duff");
-                    ctx.drawImage(img, 50, 50, 800, 800, this.x, this.y - 35, this.alt, this.ancho);
+                    ctx.drawImage(img, 180, 50, 800, 800, this.x, this.y - 35, this.alt, this.ancho);
                 }
 
                 actualizar(){
@@ -114,8 +114,9 @@ window.onload = function(){
             const altura = 80;
             const ancho = 80;
             const vidas = 3;
+            const score = 0;
 
-            const jugador = new Homer(x, y, altura, ancho, vidas, 0);
+            const jugador = new Homer(x, y, altura, ancho, vidas, score);
 
             function pintar_vidas(){
                 ctx.font = "16px Arial";
@@ -144,7 +145,7 @@ window.onload = function(){
                     const velocidad = -1;
                     brocolis_.push(new Brocoli(x, y, altura, ancho, velocidad));
                     console.log(brocolis_);
-                }, 2000);
+                }, 1500);
             }
 
             function crearDonuts(){
@@ -157,7 +158,7 @@ window.onload = function(){
                     const velocidad = -1;
                     donuts_.push(new Donut(x, y, altura, ancho, velocidad));
                     console.log(donuts_);
-                }, 3500);
+                }, 3750);
             }
 
             function crearDuff(){
@@ -167,10 +168,10 @@ window.onload = function(){
                     const y = obtener_y(a);
                     const altura = 80;
                     const ancho = 80;
-                    const velocidad = -1;
+                    const velocidad = -1.5;
                     duff_.push(new Duff(x, y, altura, ancho, velocidad));
                     console.log(duff_);
-                }, 6000);
+                }, 7000);
             }
 
 
@@ -213,24 +214,30 @@ window.onload = function(){
                 console.log(jugador.vidas)
 
                     //LOS BROCOLIS
-                brocolis_.forEach((brocoli, index) => {
+                brocolis_.forEach((brocoli, index_b) => {
                     brocoli.actualizar()
 
                     //vamos a eliminar los proyectiles cuando se salgan del canvas
                     //para evitar tener infinitos objetos
                     if (brocoli.x + ancho < 0){
                         setTimeout(() => {
-                            brocolis_.splice(index, 1)
+                            brocolis_.splice(index_b, 1)
                         }, 0)
                     }
 
                     //Colisiones de homer con los brocolis
-                    if ((brocoli.x < jugador.x + jugador.ancho) && (brocoli.x + brocoli.ancho > jugador.x) && (brocoli.y == jugador.y)){
+                    if ((brocoli.x < jugador.x + jugador.ancho) && (brocoli.x + 65 > jugador.x) && (brocoli.y == jugador.y)){
                         jugador.vidas--;
                         setTimeout(() => {
-                            brocolis_.splice(index, 1)
+                            brocolis_.splice(index_b, 1)
                         }, 0)
                     }
+
+                    /*  //PARA ACTUlIZAR LAS VELOCIDADES DE LOS OBJETOS
+                    if (jugador.score > 10){
+                        brocoli.velocidad = -2;
+                    }
+                    */
 
                 })
                 //PARAMOS CUANDO NOS QUEDAMOS SIN VIDAS
@@ -240,44 +247,44 @@ window.onload = function(){
                 }
 
                     //LOS DONUTS
-                donuts_.forEach((donut, index) => {
+                donuts_.forEach((donut, index_d) => {
                     donut.actualizar()
 
                     //vamos a eliminar los objetos cuando se salgan del canvas
                     //para evitar tener infinitos objetos
                     if (donut.x + ancho < 0){
                         setTimeout(() => {
-                            donuts_.splice(index, 1)
+                            donuts_.splice(index_d, 1)
                         }, 0)
                     }
 
                     //Colisiones de homer con los donuts
-                    if ((donut.x < jugador.x + jugador.ancho) && (donut.x + donut.ancho > jugador.x) && (donut.y == jugador.y)){
+                    if ((donut.x < jugador.x + jugador.ancho) && (donut.x + 50 > jugador.x) && (donut.y == jugador.y)){
                         jugador.score++;
                         setTimeout(() => {
-                            donuts_.splice(index, 1)
+                            donuts_.splice(index_d, 1)
                         }, 0)
                     }
 
                 })
 
                 //LAS DUFF
-                duff_.forEach((duff, index) => {
+                duff_.forEach((duff, index_c) => {
                     duff.actualizar()
 
                     //vamos a eliminar los objetos cuando se salgan del canvas
                     //para evitar tener infinitos objetos
                     if (duff.x + ancho < 0){
                         setTimeout(() => {
-                            duff_.splice(index, 1)
+                            duff_.splice(index_c, 1)
                         }, 0)
                     }
 
                     //Colisiones de homer con las duff
-                    if ((duff.x < jugador.x + jugador.ancho) && (duff.x + duff.ancho > jugador.x) && (duff.y == jugador.y)){
+                    if ((duff.x < jugador.x + jugador.ancho) && (duff.x + 30 > jugador.x) && (duff.y == jugador.y)){
                         jugador.score+=10;
                         setTimeout(() => {
-                            duff_.splice(index, 1)
+                            duff_.splice(index_c, 1)
                         }, 0)
                     }
 
