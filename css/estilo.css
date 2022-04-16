@@ -263,3 +263,18 @@
 #duff{
   display: none;
 }
+
+#boton{
+  background-color: fde000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  border-radius: 25px;
+  font-size: 2vh;
+  color: rgb(14, 14, 199);
+  width: 10%;
+  
+}
