@@ -143,6 +143,7 @@ window.onload = function(){
                     const altura = 80;
                     const ancho = 80;
                     const velocidad = -1;
+                    //const velocidad = -(Math.random() * (1.1 - 0.9) + 0.9);
                     brocolis_.push(new Brocoli(x, y, altura, ancho, velocidad));
                     console.log(brocolis_);
                 }, 1500);
@@ -155,7 +156,8 @@ window.onload = function(){
                     const y = obtener_y(a);
                     const altura = 80;
                     const ancho = 80;
-                    const velocidad = -1;
+                    //const velocidad = -1;
+                    const velocidad = -(Math.random() * (1.2 - 0.8) + 0.8);
                     donuts_.push(new Donut(x, y, altura, ancho, velocidad));
                     console.log(donuts_);
                 }, 3750);
@@ -168,7 +170,7 @@ window.onload = function(){
                     const y = obtener_y(a);
                     const altura = 80;
                     const ancho = 80;
-                    const velocidad = -1.5;
+                    const velocidad = -(Math.random() * (8 - 1.5) + 1.5);
                     duff_.push(new Duff(x, y, altura, ancho, velocidad));
                     console.log(duff_);
                 }, 7000);
