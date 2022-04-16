@@ -46,6 +46,7 @@
   #navegador a:hover{
     background-color: lightpink;
     color: white;
+    transition: all 0.3s;
   }
 
   #navegador a:active{
@@ -119,6 +120,57 @@
     color: chartreuse;
     font-weight: bold;
   }
+
+/**********************/
+ 
+  .nav_2{
+    background-color: #f2f2f2;
+    font-size: x-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    opacity: 0.97;
+
+    width: 25%;
+
+    margin-left: 10%;
+    border-radius: 5px 5px;
+    
+  }
+  
+  .submenu_2{
+    display: none;
+    list-style: none;
+    text-decoration: none;
+
+  }
+  .submenu_2 > li > a{
+    text-decoration-line: none;
+
+  }
+  .submenu_2 > li > a:visited{
+    text-decoration: none;
+    color: royalblue;
+    text-decoration-line: none;
+  }
+  .submenu_2 > li > a:hover{
+    text-decoration: none;
+    color: rosybrown;
+    text-decoration-line: none;
+  }
+
+  
+
+  .menu_2 li:hover .submenu_2{    /*Hace que se muestre el submenú al ponerse encima del li*/
+    display: block;
+    font-size:large;
+  }
+
+  /**/
+
+  .menu_2 > li{      
+    list-style: none;
+  }
+
+  
 
 /* ---------------------- PARTE DE AUTORES ----------------------------*/
 
