@@ -89,7 +89,7 @@
 
   .contenedor_desarrollo{
     background-color: pink;
-    color: blue;
+    color: rgb(14, 14, 199);
     width: 75%;       /* Ancho del contenedor */
     margin-top: 1%;
     margin-left: auto;    /* Márgenes automáticos de los lados */
@@ -106,7 +106,6 @@
   .contenedor_desarrollo_semanas{
     color: black;
     width: 95%;
-    /*background-color: rgba(2, 2, 2, 0.63);      VER SI PONER COLOR DISTINTO CUANDO ESTÉ ACABADO*/
 
     text-align: justify;
   }
