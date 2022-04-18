@@ -279,8 +279,14 @@ window.onload = function(){
                 })
                 //PARAMOS CUANDO NOS QUEDAMOS SIN VIDAS
                 if (jugador.vidas == 0){
-                    cancelAnimationFrame(animationId)
-                    audio_fondo.pause();
+                    setTimeout(() => {
+                        cancelAnimationFrame(animationId)
+                    }, 100)
+
+                    setTimeout(() => {
+                        audio_fondo.pause();
+                    }, 1500)
+                    
 
                 }
 
