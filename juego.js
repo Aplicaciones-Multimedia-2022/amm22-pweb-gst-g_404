@@ -7,6 +7,11 @@ window.onload = function(){
         if(tablero && tablero.getContext){
             var ctx = tablero.getContext("2d");
 
+            const audio_ouch = new Audio("../sonidos/homero-ouch-f.mp3");
+            const audio_fondo =new Audio("../sonidos/SINTONIA.mp3")
+            audio_fondo.loop =true;
+
+
             class Homer{
                 constructor(x, y, alt, ancho, vidas, score){
                     this.x = x;
@@ -210,6 +215,7 @@ window.onload = function(){
                 animationId = requestAnimationFrame(jugar);
                 ctx.clearRect(0, 0, tablero.width, tablero.height);
                 tab();
+                audio_fondo.play();
                 jugador.pintar();
                 pintar_vidas();
                 pintar_score();
@@ -229,6 +235,7 @@ window.onload = function(){
 
                     //Colisiones de homer con los brocolis
                     if ((brocoli.x < jugador.x + jugador.ancho) && (brocoli.x + 65 > jugador.x) && (brocoli.y == jugador.y)){
+                        audio_ouch.play();
                         jugador.vidas--;
                         setTimeout(() => {
                             brocolis_.splice(index_b, 1)
