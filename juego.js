@@ -34,6 +34,11 @@ window.onload = function(){
                     ctx.drawImage(img, 50, 25, 450, 450, this.x, this.y-35, this.alt, this.ancho);
                 }
 
+                tocado(){
+                  var img = document.getElementById("dist");
+                  ctx.drawImage(img, 50, 25, 450, 450, this.x, this.y-35, this.alt, this.ancho);
+                }
+
             }
 
             class Brocoli{
@@ -87,26 +92,6 @@ window.onload = function(){
 
                 pintar(){
                     var img = document.getElementById("duff");
-                    ctx.drawImage(img, 180, 50, 800, 800, this.x, this.y - 35, this.alt, this.ancho);
-                }
-
-                actualizar(){
-                    this.pintar();
-                    this.x = this.x + this.velocidad;
-                }
-            }
-
-            class HomerDist{
-                constructor(x, y, alt, ancho, velocidad){
-                    this.x = x;
-                    this.y = y;
-                    this.alt = alt;
-                    this.ancho = ancho;
-                    this.velocidad = velocidad;
-                }
-
-                pintar(){
-                    var img = document.getElementById("dist");
                     ctx.drawImage(img, 180, 50, 800, 800, this.x, this.y - 35, this.alt, this.ancho);
                 }
 
@@ -276,7 +261,7 @@ window.onload = function(){
                     if ((brocoli.x < jugador.x + jugador.ancho) && (brocoli.x + 65 > jugador.x) && (brocoli.y == jugador.y)){
                         audio_ouch.play();
                         jugador.vidas--;
-                        dist.pintar();
+                        jugador.tocado();
                         setTimeout(() => {
                             brocolis_.splice(index_b, 1)
                         }, 0)
@@ -307,7 +292,7 @@ window.onload = function(){
                     setTimeout(() => {
                         audio_fondo.pause();
                     }, 1500)
-                    
+
 
                 }
 
