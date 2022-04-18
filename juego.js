@@ -11,12 +11,6 @@ window.onload = function(){
 
             const audio_fondo =new Audio("../sonidos/SINTONIA.mp3")
             audio_fondo.loop =true;
-            document.getElementById("on").onclick = function music_on(){
-              audio_fondo.muted = false;              
-            }
-            document.getElementById("off").onclick = function music_off(){
-              audio_fondo.muted = true;
-            }
 
 
             class Homer{
@@ -214,6 +208,12 @@ window.onload = function(){
                 else if(e.keyCode == 40) {
                   downPress = false;
                 }
+            }
+            document.getElementById("on").onclick = function music_on(){
+              audio_fondo.muted = false;
+            }
+            document.getElementById("off").onclick = function music_off(){
+              audio_fondo.muted = true;
             }
             /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
