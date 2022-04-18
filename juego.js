@@ -8,8 +8,15 @@ window.onload = function(){
             var ctx = tablero.getContext("2d");
 
             const audio_ouch = new Audio("../sonidos/homero-ouch-f.mp3");
+
             const audio_fondo =new Audio("../sonidos/SINTONIA.mp3")
             audio_fondo.loop =true;
+            document.getElementById("on").onclick = function music_on(){
+              audio_fondo.muted = false;              
+            }
+            document.getElementById("off").onclick = function music_off(){
+              audio_fondo.muted = true;
+            }
 
 
             class Homer{
