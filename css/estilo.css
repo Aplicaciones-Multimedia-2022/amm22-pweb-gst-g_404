@@ -120,6 +120,47 @@
     font-weight: bold;
   }
 
+  .contenedor_instrucciones{
+    width: 60%;
+    background-color: rgba(255, 192, 203, 0.437);
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start ;  /* eje x*/
+    align-items:flex-start;      /* eje y*/
+  }
+
+  .contenedor_descripcion{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+  
+  }
+
+  /*Hacemos una clase para que rote un objeto*/
+  .rotacion {
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+  }
+  @-moz-keyframes spin { 
+      100% { -moz-transform: rotate(360deg); } 
+  }
+  @-webkit-keyframes spin { 
+      100% { -webkit-transform: rotate(360deg); } 
+  }
+  @keyframes spin { 
+      100% { 
+          -webkit-transform: rotate(360deg); 
+          transform:rotate(360deg); 
+      } 
+  }
+
 /**********************/
  
   .nav_2{
@@ -240,15 +281,30 @@
   background-color: #f2f2f200;
   width: 75%;
 
+  margin-left: -7%;
+  margin-right: auto;
+  margin-top: 1%;
+
 
   display: flex;
-  margin-top: 1%;
-  margin-left: auto;
-  margin-right: auto;
   flex-direction: column;
-  justify-content: center;  /* eje x*/
-  align-items: center;      /* eje y*/
+  align-items: center;
+  
 
+}
+
+.contenedor_juego_botones{
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.botones_musica{
+  display: flex;
+  flex-direction: column;
+  align-items:baseline;
+  margin-left: 15%;
+  margin-top: 5%;
 }
 
 #homer{
