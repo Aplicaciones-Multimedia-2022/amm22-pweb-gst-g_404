@@ -235,11 +235,20 @@ window.onload = function(){
                         }, 0)
                     }
 
-                    /*  //PARA ACTUlIZAR LAS VELOCIDADES DE LOS OBJETOS
-                    if (jugador.score > 10){
+                      //PARA ACTUlIZAR LAS VELOCIDADES DE LOS OBJETOS
+                    if (jugador.score > 10 && jugador.score < 40){
                         brocoli.velocidad = -2;
                     }
-                    */
+                    if (jugador.score > 40 && jugador.score < 80){
+                      brocoli.velocidad = -3;
+                    }
+                    if (jugador.score > 80 && jugador.score < 120){
+                      brocoli.velocidad = -4;
+                    }
+                    if (jugador.score > 120){
+                      brocoli.velocidad = -5;
+                    }
+
 
                 })
                 //PARAMOS CUANDO NOS QUEDAMOS SIN VIDAS
@@ -284,7 +293,7 @@ window.onload = function(){
 
                     //Colisiones de homer con las duff
                     if ((duff.x < jugador.x + jugador.ancho) && (duff.x + 30 > jugador.x) && (duff.y == jugador.y)){
-                        jugador.score+=10;
+                        jugador.score+=5;
                         setTimeout(() => {
                             duff_.splice(index_c, 1)
                         }, 0)
