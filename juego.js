@@ -7,10 +7,16 @@ window.onload = function(){
         if(tablero && tablero.getContext){
             var ctx = tablero.getContext("2d");
 
-            const audio_ouch = new Audio("../sonidos/homero-ouch-f.mp3");
+            const audio_ouch = new Audio("../sonidos/ouch.mp3");
 
             const audio_fondo =new Audio("../sonidos/SINTONIA.mp3")
             audio_fondo.loop =true;
+            audio_fondo.volume = 0.4;
+
+            const audio_mmm = new Audio("../sonidos/mmm.mp3");
+            audio_mmm.volume = 1;
+            
+            const audio_yuju = new Audio("../sonidos/yuju.mp3")
 
 
             class Homer{
@@ -211,9 +217,15 @@ window.onload = function(){
             }
             document.getElementById("on").onclick = function music_on(){
               audio_fondo.muted = false;
+              audio_ouch.muted = false;
+              audio_mmm.muted = false;
+              audio_yuju.muted = false;
             }
             document.getElementById("off").onclick = function music_off(){
               audio_fondo.muted = true;
+              audio_ouch.muted = true;
+              audio_mmm.muted = true;
+              audio_yuju.muted = true;
             }
             /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
@@ -285,6 +297,7 @@ window.onload = function(){
 
                     //Colisiones de homer con los donuts
                     if ((donut.x < jugador.x + jugador.ancho) && (donut.x + 50 > jugador.x) && (donut.y == jugador.y)){
+                        audio_mmm.play();
                         jugador.score++;
                         setTimeout(() => {
                             donuts_.splice(index_d, 1)
@@ -307,6 +320,7 @@ window.onload = function(){
 
                     //Colisiones de homer con las duff
                     if ((duff.x < jugador.x + jugador.ancho) && (duff.x + 30 > jugador.x) && (duff.y == jugador.y)){
+                        audio_yuju.play();
                         jugador.score+=5;
                         setTimeout(() => {
                             duff_.splice(index_c, 1)
