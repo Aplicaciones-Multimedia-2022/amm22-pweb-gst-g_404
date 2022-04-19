@@ -15,7 +15,7 @@ window.onload = function(){
 
             const audio_mmm = new Audio("../sonidos/mmm.mp3");
             audio_mmm.volume = 1;
-            
+
             const audio_yuju = new Audio("../sonidos/yuju.mp3")
 
 
@@ -32,6 +32,11 @@ window.onload = function(){
                 pintar(){
                     var img = document.getElementById("homer");
                     ctx.drawImage(img, 50, 25, 450, 450, this.x, this.y-35, this.alt, this.ancho);
+                }
+
+                tocado(){
+                  var img = document.getElementById("dist");
+                  ctx.drawImage(img, 50, 25, 450, 450, this.x, this.y-35, this.alt, this.ancho);
                 }
 
             }
@@ -256,6 +261,7 @@ window.onload = function(){
                     if ((brocoli.x < jugador.x + jugador.ancho) && (brocoli.x + 65 > jugador.x) && (brocoli.y == jugador.y)){
                         audio_ouch.play();
                         jugador.vidas--;
+                        jugador.tocado();
                         setTimeout(() => {
                             brocolis_.splice(index_b, 1)
                         }, 0)
@@ -286,7 +292,7 @@ window.onload = function(){
                     setTimeout(() => {
                         audio_fondo.pause();
                     }, 1500)
-                    
+
 
                 }
 

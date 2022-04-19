@@ -123,7 +123,7 @@ body{
 .contenedor_instrucciones{
   width: 60%;
   background-color: rgba(255, 192, 203, 0.437);
-  
+
   margin-left: auto;
   margin-right: auto;
 
@@ -148,17 +148,17 @@ body{
   -moz-animation:spin 4s linear infinite;
   animation:spin 4s linear infinite;
 }
-@-moz-keyframes spin { 
-    100% { -moz-transform: rotate(360deg); } 
+@-moz-keyframes spin {
+    100% { -moz-transform: rotate(360deg); }
 }
-@-webkit-keyframes spin { 
-    100% { -webkit-transform: rotate(360deg); } 
+@-webkit-keyframes spin {
+    100% { -webkit-transform: rotate(360deg); }
 }
-@keyframes spin { 
-    100% { 
-        -webkit-transform: rotate(360deg); 
-        transform:rotate(360deg); 
-    } 
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform:rotate(360deg);
+    }
 }
 
 /**********************/
@@ -173,10 +173,14 @@ body{
 
   margin-left: 10%;
   border-radius: 5px 5px;
+<<<<<<< HEAD
   margin-top: 1%;
 
   
   
+=======
+
+>>>>>>> 7c008d6baeabb8c8994ca01a4008fa70a345a5bc
 }
 
 .dropbtn{   /*Estilo del botón*/
@@ -204,8 +208,16 @@ body{
   text-decoration: none;
   display: block;
 }
+<<<<<<< HEAD
 .contenido_drop a:hover{
   background-color: #f1f1f1
+=======
+
+/**/
+
+.menu_2 > li{
+  list-style: none;
+>>>>>>> 7c008d6baeabb8c8994ca01a4008fa70a345a5bc
 }
 
 .show {display:block;}
@@ -287,7 +299,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
 
 }
 
@@ -317,7 +329,9 @@ body{
 #duff{
   display: none;
 }
-
+#dist{
+  display: none;
+}
 #boton{
   background-color: fde000;
   display: flex;
@@ -330,5 +344,5 @@ body{
   font-size: 2vh;
   color: rgb(14, 14, 199);
   width: 10%;
-  
+
 }
