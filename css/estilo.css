@@ -84,7 +84,7 @@ body{
   height: 50%;      /* Altura del contenedor */
 }
 .contenedor h2{
-  color: blue;
+  color: rgb(14, 14, 199);
 }
 
 .contenedor_desarrollo{
@@ -270,7 +270,7 @@ body{
   display: block;
   background-color: #f2f2f2;
   border: 2px solid black;
-  
+
 }
 
 .contenedor_juego{
