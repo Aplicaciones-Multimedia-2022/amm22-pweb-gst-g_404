@@ -101,7 +101,20 @@ window.onload = function(){
                 }
             }
 
-            function tab(){
+            class tab{
+                constructor(x, y, alt, ancho){
+                    this.x = x;
+                    this.y = y;
+                    this.alt = alt;
+                    this.ancho = ancho;
+                }
+                pintar(){
+                    var img = document.getElementById("duff");
+                    ctx.drawImage(img, 180, 50, 800, 800, this.x, this.y - 35, this.alt, this.ancho);
+                }
+            }
+
+            function tab_(){
                 ctx.beginPath();
                 ctx.fillStyle = 'lightpink';   //cambiar el color.
                 ctx.fillRect(0, 0, 800, 500);
@@ -249,7 +262,7 @@ window.onload = function(){
             function jugar(){
                 animationId = requestAnimationFrame(jugar);
                 ctx.clearRect(0, 0, tablero.width, tablero.height);
-                tab();
+                tab_();
                 audio_fondo.play();
                 jugador.pintar();
                 pintar_vidas();
