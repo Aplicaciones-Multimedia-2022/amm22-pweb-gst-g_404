@@ -102,15 +102,13 @@ window.onload = function(){
             }
 
             class tab{
-                constructor(x, y, alt, ancho){
+                constructor(x, y){
                     this.x = x;
                     this.y = y;
-                    this.alt = alt;
-                    this.ancho = ancho;
                 }
                 pintar(){
-                    var img = document.getElementById("duff");
-                    ctx.drawImage(img, 180, 50, 800, 800, this.x, this.y - 35, this.alt, this.ancho);
+                    var img = document.getElementById("fondo");
+                    ctx.drawImage(img, this.x, this.y);
                 }
             }
 
@@ -153,6 +151,7 @@ window.onload = function(){
             const score = 0;
 
             const jugador = new Homer(x, y, altura, ancho, vidas, score);
+            const tab_juego = new tab(0,0);
 
             function pintar_vidas(){
                 ctx.font = "16px Arial";
@@ -262,7 +261,7 @@ window.onload = function(){
             function jugar(){
                 animationId = requestAnimationFrame(jugar);
                 ctx.clearRect(0, 0, tablero.width, tablero.height);
-                tab_();
+                tab_juego.pintar();
                 audio_fondo.play();
                 jugador.pintar();
                 pintar_vidas();
