@@ -294,7 +294,7 @@ window.onload = function(){
 
                     setTimeout(() => {
                         audio_fondo.pause();
-                    }, 1500)
+                    }, 105)
 
 
                 }
