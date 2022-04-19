@@ -11,7 +11,7 @@ window.onload = function(){
 
             const audio_fondo =new Audio("../sonidos/SINTONIA.mp3")
             audio_fondo.loop =true;
-            audio_fondo.volume = 0.4;
+            audio_fondo.volume = 0.5;
 
             const audio_mmm = new Audio("../sonidos/mmm.mp3");
             audio_mmm.volume = 1;
@@ -261,7 +261,7 @@ window.onload = function(){
                     if ((brocoli.x < jugador.x + jugador.ancho) && (brocoli.x + 65 > jugador.x) && (brocoli.y == jugador.y)){
                         audio_ouch.play();
                         jugador.vidas--;
-                        jugador.tocado();
+                      //  jugador.tocado();
                         setTimeout(() => {
                             brocolis_.splice(index_b, 1)
                         }, 0)
@@ -286,7 +286,10 @@ window.onload = function(){
                 //PARAMOS CUANDO NOS QUEDAMOS SIN VIDAS
                 if (jugador.vidas == 0){
                     setTimeout(() => {
-                        cancelAnimationFrame(animationId)
+                      cancelAnimationFrame(animationId)
+                      ctx.clearRect(0, 0, tablero.width, tablero.height);
+                      tab();
+
                     }, 100)
 
                     setTimeout(() => {
