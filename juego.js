@@ -171,11 +171,10 @@ window.onload = function(){
                     const y = obtener_y(a);
                     const altura = 80;
                     const ancho = 80;
-                    const velocidad = -1;
-                    //const velocidad = -(Math.random() * (1.1 - 0.9) + 0.9);
+                    const velocidad = -1.8;
                     brocolis_.push(new Brocoli(x, y, altura, ancho, velocidad));
                     console.log(brocolis_);
-                }, 1500);
+                }, 900);
             }
 
             function crearDonuts(){
@@ -186,10 +185,10 @@ window.onload = function(){
                     const altura = 80;
                     const ancho = 80;
                     //const velocidad = -1;
-                    const velocidad = -(Math.random() * (1.2 - 0.8) + 0.8);
+                    const velocidad = -(Math.random() * (2 - 1.6) + 1.6);
                     donuts_.push(new Donut(x, y, altura, ancho, velocidad));
                     console.log(donuts_);
-                }, 3750);
+                }, 2000);
             }
 
             function crearDuff(){
@@ -199,7 +198,7 @@ window.onload = function(){
                     const y = obtener_y(a);
                     const altura = 80;
                     const ancho = 80;
-                    const velocidad = -(Math.random() * (8 - 1.5) + 1.5);
+                    const velocidad = -(Math.random() * (8 - 3) + 3);
                     duff_.push(new Duff(x, y, altura, ancho, velocidad));
                     console.log(duff_);
                 }, 7000);
@@ -279,21 +278,6 @@ window.onload = function(){
                         }, 0)
                     }
 
-                      //PARA ACTUlIZAR LAS VELOCIDADES DE LOS OBJETOS
-                    if (jugador.score > 10 && jugador.score < 40){
-                        brocoli.velocidad = -2;
-                    }
-                    if (jugador.score > 40 && jugador.score < 80){
-                      brocoli.velocidad = -3;
-                    }
-                    if (jugador.score > 80 && jugador.score < 120){
-                      brocoli.velocidad = -4;
-                    }
-                    if (jugador.score > 120){
-                      brocoli.velocidad = -5;
-                    }
-
-
                 })
                 /////////////////////////////////////////
                 //PARAMOS CUANDO NOS QUEDAMOS SIN VIDAS//
@@ -332,6 +316,20 @@ window.onload = function(){
                         setTimeout(() => {
                             donuts_.splice(index_d, 1)
                         }, 0)
+                    }
+
+                      //PARA ACTUlIZAR LAS VELOCIDADES DE LOS OBJETOS
+                    if (jugador.score > 10 && jugador.score < 30){
+                        donut.velocidad = -(Math.random() * (2.4 - 2) + 2);
+                    }
+                    if (jugador.score > 30 && jugador.score < 60){
+                        donut.velocidad = -(Math.random() * (2.8 - 2.4) + 2.4);
+                    }
+                    if (jugador.score > 60 && jugador.score < 100){
+                        donut.velocidad = -(Math.random() * (3.2 - 2.8) + 2.8);
+                    }
+                    if (jugador.score > 100){
+                        donut.velocidad = -(Math.random() * (5 - 4) + 4);
                     }
 
                 })
