@@ -163,54 +163,49 @@ body{
 
 /**********************/
 
-.nav_2{
-  background-color: #f2f2f2;
+.menu_2{      /*Las letras de planificación y el recuadro en el que está*/
+  background-color: #fddf00ec;
   font-size: x-large;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   opacity: 0.97;
 
-  width: 25%;
+  width: 22%;
 
   margin-left: 10%;
   border-radius: 5px 5px;
-
+  margin-top: 1%;
 }
 
-.submenu_2{
+.dropbtn{   /*Estilo del botón*/
+  background-color: #fde000;
+  height: 36px;
+  width: 35px;
+}
+.dropbtn:hover{
+  background-color: azure;
+}
+
+.contenido_drop{
   display: none;
-  list-style: none;
+  position:relative;
+  background-color:azure;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.contenido_drop a {
+  color: black;
+  font-family: Geneva, Tahoma, sans-serif;
+  font-size: large;
+  padding: 10px 10px;
   text-decoration: none;
-
-}
-.submenu_2 > li > a{
-  text-decoration-line: none;
-
-}
-.submenu_2 > li > a:visited{
-  text-decoration: none;
-  color: royalblue;
-  text-decoration-line: none;
-}
-.submenu_2 > li > a:hover{
-  text-decoration: none;
-  color: rosybrown;
-  text-decoration-line: none;
-}
-
-
-
-.menu_2 li:hover .submenu_2{    /*Hace que se muestre el submenú al ponerse encima del li*/
   display: block;
-  font-size:large;
+}
+.contenido_drop a:hover{
+  background-color: #f1f1f1
 }
 
-/**/
-
-.menu_2 > li{
-  list-style: none;
-}
-
-
+.show {display:block;}
 
 /* ---------------------- PARTE DE AUTORES ----------------------------*/
 
