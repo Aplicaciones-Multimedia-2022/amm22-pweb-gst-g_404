@@ -318,6 +318,9 @@ body{
 #dist{
   display: none;
 }
+#fondo{
+  display:none;
+}
 #boton{
   background-color: fde000;
   display: flex;
