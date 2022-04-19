@@ -107,6 +107,12 @@ window.onload = function(){
                 ctx.fillRect(0, 0, 800, 500);
             }
 
+            function fin(){
+                ctx.beginPath();
+                ctx.fillStyle = 'gray';   //cambiar el color.
+                ctx.fillRect(tablero.width/2 - 200, tablero.height/2 - 125, 400, 250);
+            }
+
 
             /*---------------------------------------------------------------------------*/
             //Función para las alturas de los objetos aleatorios
@@ -145,6 +151,12 @@ window.onload = function(){
                 ctx.font = "16px Arial";
                 ctx.fillStyle = "black";
                 ctx.fillText("Score: "+ jugador.score, 80, 20);
+            }
+
+            function pintar_final(){
+                ctx.font = "25px Arial";
+                ctx.fillStyle = "white";
+                ctx.fillText("Tu puntuación ha sido de: "+ jugador.score, tablero.width/4 + 50, tablero.height/2);
             }
 
 
@@ -283,12 +295,14 @@ window.onload = function(){
 
 
                 })
-                //PARAMOS CUANDO NOS QUEDAMOS SIN VIDAS
+                /////////////////////////////////////////
+                //PARAMOS CUANDO NOS QUEDAMOS SIN VIDAS//
+                /////////////////////////////////////////
                 if (jugador.vidas == 0){
                     setTimeout(() => {
                       cancelAnimationFrame(animationId)
-                      ctx.clearRect(0, 0, tablero.width, tablero.height);
-                      tab();
+                      fin();
+                      pintar_final();
 
                     }, 100)
 
