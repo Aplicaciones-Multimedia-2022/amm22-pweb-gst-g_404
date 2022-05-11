@@ -25,12 +25,31 @@
 
     <div class="contenedor">
       <h2>Información multimedia</h2>
- 
-      <video width="640" height="360" autoplay>
-        <source src="http://localhost:9090">
-      </video>
-
+      <p>
+        Para implementar el flujo multimedia Gstreamer en nustra página web hemos utilizado la opción 2 de aula global.
+      </p>
+      <p>
+        Hemos creado un servidor en el puerto 8888 que nos entrega el video que queremos reproducir en nuestra página web.
+      </p>
+      <p>
+        En este html hacemos a continuación una etiqueta video que coge la información de localhost en el puerto 9090.
+      </p>
+      <p>
+        Luego hemos creado un documeto para hacer el pipeline que ejecuta nuestro flujo Gstreamer. Dejamos el pipeline a continuación.
+      </p>      
+      <p>
+        PIPELINE: 
+      </p>
+      <p>
+        gst-launch-1.0 filesrc location= amm.mp4 ! qtdemux ! decodebin ! videobalance saturation=0.5 ! videoconvert ! 
+        clockoverlay shaded-background=true font-desc="Sans 16" ! queue ! theoraenc ! queue ! m. oggmux name=m ! 
+        queue ! tcpserversink host=127.0.0.1 port=9090
+      </p>
     </div>
+
+    <video width="640" height="360" autoplay>
+      <source src="http://localhost:9090">
+    </video>
 
   </body>
 
