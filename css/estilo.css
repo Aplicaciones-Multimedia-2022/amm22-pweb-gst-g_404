@@ -82,6 +82,7 @@ body{
   justify-content: center;  /* eje x*/
   align-items: center;      /* eje y*/
   height: 50%;      /* Altura del contenedor */
+  padding: 1%;
 }
 .contenedor h2{
   color: rgb(14, 14, 199);
