@@ -343,3 +343,12 @@ body{
   width: 10%;
 
 }
+
+.v{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+}
