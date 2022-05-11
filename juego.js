@@ -324,7 +324,7 @@ window.onload = function(){
                     //Colisiones de homer con los donuts
                     if ((donut.x < jugador.x + jugador.ancho) && (donut.x + 50 > jugador.x) && (donut.y == jugador.y)){
                         audio_mmm.play();
-                        jugador.score++;
+                        jugador.score+=2;
                         setTimeout(() => {
                             donuts_.splice(index_d, 1)
                         }, 0)
